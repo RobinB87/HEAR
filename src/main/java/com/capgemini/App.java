@@ -1,42 +1,45 @@
 package com.capgemini;
 
-import com.capgemini.data.DataList;
-import com.capgemini.models.Ingredient;
-import com.capgemini.models.MenuItem;
-import com.capgemini.models.SubMenu;
-import com.capgemini.services.MenuService;
+import com.capgemini.lists.DataLists;
+import com.capgemini.models.Food;
+
+import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
 
-        MenuService menuService = new MenuService();
-        DataList dataList = new DataList();
+        Scanner sc = new Scanner(System.in);
+        DataLists dataList = new DataLists();
+        boolean quit = false;
 
-        for (int i = 0; i < 5; i++) {
-            Ingredient newIng = new Ingredient("Ingredient" + i , i);
-            dataList.ingredienten.add(newIng);
-        }
+        while (!quit) {
+            System.out.println("Add a dish or a drink? \nType: dish or drink to choose \ntype quit to exit the loop.");
+            String menuItemType = sc.nextLine();
 
-        for (Ingredient ingr : dataList.ingredienten) {
-            System.out.println(ingr.getName());
-        }
+            if (menuItemType.equals("dish")) {
+                System.out.println("What is the name of the dish?");
+                String dishName = sc.nextLine();
+                System.out.println("What is the price of the dish?");
+                double dishPrice = sc.nextDouble();
+                dataList.foodList.add(new Food(dishName, dishPrice));
+            } else if (menuItemType.equals("drink")) {
 
-
-        for (SubMenu subMenu : menuService.getSubMenus()) {
-            System.out.println(subMenu.getName());
-            System.out.println("-------");
-
-            for (MenuItem menuItem : menuService.getMenuItemBySubMenu(subMenu)) {
-                System.out.println(menuItem.getName());
-
-                for (Ingredient ingredient : menuService.getIngredientsByMenuItem(menuItem)) {
-                    System.out.println("-" + ingredient.getName());
-                }
-                System.out.println("");
+            } else if (menuItemType.equals("quit")) {
+                quit = true;
+                System.out.println("Exiting loop");
+            } else {
+                System.out.println("Error");
             }
-            System.out.println("");
         }
+
+        System.out.flush();
+
+        for (Food food : dataList.foodList) {
+
+            System.out.println(food.getName() + " - " + food.getPrice());
+        }
+
 
     }
 }

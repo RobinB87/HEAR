@@ -1,18 +1,20 @@
 package com.capgemini.models;
 
+import java.util.List;
+
 public class Food extends MenuItem {
 
-    private Ingredient[] ingredients;
+    private List<Ingredient> ingredients;
 
     public Food(String name, double price) {
         super(name, price);
     }
 
-    public Ingredient[] getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Ingredient[] ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 }
