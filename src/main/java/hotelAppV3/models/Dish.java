@@ -14,6 +14,4 @@ public class Dish extends MenuItem{
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
-
-
 }

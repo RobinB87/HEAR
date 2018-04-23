@@ -1,12 +1,9 @@
 package hotelAppV3;
 
 import hotelAppV3.data.DataList;
-import hotelAppV3.data.DishFiller;
-import hotelAppV3.models.Dish;
 import hotelAppV3.models.Ingredient;
-import hotelAppV3.models.Print;
+import hotelAppV3.print.Print;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,45 +14,12 @@ public class App {
         System.out.println("");
         System.out.println("");
 
-        DishFiller dishFiller = new DishFiller();
         Print print = new Print();
-
         DataList dataList = new DataList();
-        dataList.dishList.add(new Dish("Spaghetti", 14.99, dishFiller.getSpaghettiBolognese()));
-        dataList.dishList.add(new Dish("Carpaccio", 7.99, dishFiller.getCarpaccio()));
-        dataList.dishList.add(new Dish("English Breakfast", 9.99, dishFiller.getEnglishBreakfast()));
 
-        //print menu met IF / ELSE
-        System.out.println("");
-        System.out.println("IF/ELSE MENU");
-        System.out.println("");
-        for (Dish dish : dataList.dishList) {
-            if (dish.getName() == "Spaghetti") {
-                print.printDish(dish);
-            } else if (dish.getName() == "Carpaccio") {
-                print.printDish(dish);
-            } else {
-                print.printDish(dish);
-            }
-        }
-
-        //print menu met SWITCH
-        System.out.println("");
-        System.out.println("SWITCH MENU");
-        System.out.println("");
-        for (Dish dish : dataList.dishList) {
-            switch (dish.getName()) {
-                case "Spaghetti":
-                    print.printDish(dish);
-                    break;
-                case "Carpaccio":
-                    print.printDish(dish);
-                    break;
-                default:
-                    print.printDish(dish);
-                    break;
-            }
-        }
+        //print
+        print.printDishes(dataList.getDishList());
+        print.printDrinks(dataList.getDrinkList());
 
         //Scanner (inputmethode)
         Scanner sc = new Scanner(System.in);
