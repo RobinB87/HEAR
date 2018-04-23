@@ -1,6 +1,7 @@
 package hotelAppV3;
 
 import hotelAppV3.data.DataList;
+import hotelAppV3.models.Dish;
 import hotelAppV3.models.Ingredient;
 import hotelAppV3.print.Print;
 
@@ -25,18 +26,20 @@ public class App {
         Scanner sc = new Scanner(System.in);
         boolean quit = false;
 
-        List<Ingredient> addedIngredients = new ArrayList<>();
+        List<Dish> newDishes = new ArrayList<>();
 
         while (!quit) {
 
             System.out.println("Add a dish or a drink? \nType: dish or drink to choose. \nType: quit to exit the input.");
             String menuItemType = sc.nextLine();
+            List<Ingredient> addedIngredients = new ArrayList<>();
 
             if (menuItemType.equals("dish")) {
                 System.out.println("What is the name of the dish?");
                 String dishName = sc.nextLine();
                 System.out.println("What is the price of the dish?");
                 double dishPrice = sc.nextDouble();
+
                 boolean quitIng = false;
 
                 while (!quitIng) {
@@ -56,6 +59,9 @@ public class App {
                     }
                 }
 
+                Dish newDish = new Dish(dishName, dishPrice, addedIngredients);
+                newDishes.add(newDish);
+
             } else if (menuItemType.equals("drink")) {
 
             } else if (menuItemType.equals("quit")) {
@@ -66,5 +72,15 @@ public class App {
             }
         }
         System.out.flush();
+
+        for (Dish dish : newDishes) {
+            System.out.println("");
+            System.out.println(dish.getName() + " " + dish.getPrice());
+            System.out.println("-----------");
+            for (Ingredient ingr : dish.getIngredients()){
+                System.out.println(ingr.getName() + " " + ingr.getPrice());
+            }
+            System.out.println("");
+        }
     }
 }
