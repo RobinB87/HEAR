@@ -44,12 +44,15 @@ public class App {
                     if (sc.nextLine().equals("quit")) {
                         quitIng = true;
                     } else {
-
                         System.out.println("What is an ingredient of the dish?");
                         String ingName = sc.nextLine();
-                        System.out.println("What is the price?");
-                        double ingPrice = sc.nextDouble();
-                        addedIngredients.add(new Ingredient(ingName, ingPrice));
+                        if (ingName.equals("quit")) {
+                            quitIng = true;
+                        } else {
+                            System.out.println("What is the price?");
+                            double ingPrice = sc.nextDouble();
+                            addedIngredients.add(new Ingredient(ingName, ingPrice));
+                        }
                     }
                 }
 
