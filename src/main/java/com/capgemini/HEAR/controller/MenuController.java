@@ -24,7 +24,7 @@ public class MenuController {
     @GetMapping("/categories")
     public List<Category> showCategories() {
         DataList dataList = new DataList();
-
+        
         return dataList.getCategories();
     }
 

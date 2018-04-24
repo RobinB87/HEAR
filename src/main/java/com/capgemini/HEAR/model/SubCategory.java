@@ -12,4 +12,8 @@ public class SubCategory extends Base {
         super(name);
         this.menuItems = menuItems;
     }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
 }

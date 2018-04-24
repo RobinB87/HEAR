@@ -12,4 +12,8 @@ public class Dish extends MenuItem {
         super(name, price);
         this.ingredientList = ingredientList;
     }
+
+    public List<Ingredient> getIngredientList() {
+        return ingredientList;
+    }
 }

@@ -9,10 +9,14 @@ public class Category extends Base {
 
     public Category(){}
 
-    private List<SubCategory> subCategories = new ArrayList<>();
+    private List<SubCategory> subCategories;
 
     public Category(String name, List<SubCategory> subCategories){
         super(name);
         this.subCategories = subCategories;
+    }
+
+    public List<SubCategory> getSubCategories() {
+        return subCategories;
     }
 }
