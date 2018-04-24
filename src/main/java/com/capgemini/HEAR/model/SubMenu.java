@@ -6,6 +6,8 @@ public abstract class SubMenu extends Base {
 
     private List<MenuItem> menuItems;
 
+    public SubMenu(){}
+
     public SubMenu(String name){
         super(name);
     }
