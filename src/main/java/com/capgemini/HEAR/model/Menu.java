@@ -4,5 +4,5 @@ import java.util.List;
 
 public class Menu {
 
-    private List<SubMenu> subMenus;
+    private List<SubCategory> subCategories;
 }
