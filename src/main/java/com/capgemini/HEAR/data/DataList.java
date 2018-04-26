@@ -60,7 +60,7 @@ public class DataList {
     private void starter(){
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(this.dishes.get(1));
-        this.subCategories.add(new SubCategory("Starter", menuItems));
+        this.subCategories.add(new SubCategory("Tosti's", menuItems));
     }
 
     private void mainCourse(){
