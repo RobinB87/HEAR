@@ -20,7 +20,6 @@ function showSubCategories(data) {
         html += '<h2>-- ' + data[i].name + '</h2>';
         html += showMenuItems(data[i].menuItems);
     }
-
     return html;
 }
 
@@ -29,7 +28,16 @@ function showMenuItems(data) {
 
     for (var i = 0; i < data.length; i++) {
         html += '<h3>--- ' + data[i].name + ' ' + data[i].price + '</h3>';
+        html += showIngredients(data[i].ingredientList);
     }
     return html;
 }
 
+function showIngredients(data) {
+    var html = '';
+
+    for (var i = 0; i < data.length; i++){
+        html += '<h4>----' + data[i].name + ' ' + data[i].price + '</h4>';
+    }
+    return html;
+}
