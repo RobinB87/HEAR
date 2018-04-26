@@ -43,6 +43,7 @@ public class DataList {
     private void breakfast() {
         List<SubCategory> subCategories = new ArrayList<>();
         subCategories.add(this.subCategories.get(0));
+        subCategories.add(this.subCategories.get(2));
         this.categories.add(new Category("Breakfast", subCategories));
     }
 
@@ -53,20 +54,28 @@ public class DataList {
     }
 
     private void fillSubCategories(){
-        this.starter();
+        this.tosti();
         this.mainCourse();
+        this.eggs();
     }
 
-    private void starter(){
+    private void eggs() {
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(this.dishes.get(1));
+        this.subCategories.add(new SubCategory("Eggs", menuItems));
+    }
+
+    private void tosti(){
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(this.dishes.get(1));
         this.subCategories.add(new SubCategory("Tosti's", menuItems));
     }
 
+
     private void mainCourse(){
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(this.dishes.get(0));
-        this.subCategories.add(new SubCategory("Main course", menuItems));
+        this.subCategories.add(new SubCategory("Soepen", menuItems));
     }
 
     private void fillDishes() {
