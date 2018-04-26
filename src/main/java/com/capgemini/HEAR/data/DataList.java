@@ -69,7 +69,6 @@ public class DataList {
         this.subCategories.add(new SubCategory("Main course", menuItems));
     }
 
-
     private void fillDishes() {
         this.spaghetti();
         this.carpaccio();
