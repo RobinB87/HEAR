@@ -37,7 +37,7 @@ function showIngredients(data) {
     var html = '';
 
     for (var i = 0; i < data.length; i++){
-        html += '<h4>----' + data[i].name + ' ' + data[i].price + '</h4>';
+        html += '<h4>---- ' + data[i].name + ' ' + data[i].price + '</h4>';
     }
     return html;
 }

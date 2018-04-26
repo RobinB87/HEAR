@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController //is een rest api, is eigenlijk gewoon een web API
 @RequestMapping("/api/menu")
 public class MenuController {
 
