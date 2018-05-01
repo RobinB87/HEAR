@@ -1,0 +1,23 @@
+body{
+    /*Commenting in CSS*/
+    color: #fff;   /* colour wine*/
+    font-family: serif;
+    text-align: center;
+}
+
+#content{               /* grid wrapper*/
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-auto-rows: minmax(200px,500px);
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#content div{
+    background: #3bbced;        /*light blue colour*/
+    padding: 30px;
+}
+
+#content div:nth-child(even){    /* All even divs have this colour */
+    background: #777;        /* gray */
+}
