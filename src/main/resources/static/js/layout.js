@@ -4,3 +4,8 @@ $('#loadMenuBtn').click(function(e) {
             });
 });
 
+$('#gotToAdminBtn').click(function(e) {
+   $.get('admin/index.html', function(data) {
+       $('#content').html(data);
+   });
+});
