@@ -1,5 +1,14 @@
 <!--Volle Container voor de hele pagina!-->
-<div class="container">
+<div class="jumbotron-fluid bg-light">
+        <!--breadcrumb-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Category</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View Categories</li>
+        </ol>
+    </nav>
+
     <!--Titel-->
     <div class="row">
         <div class="container text-center">
@@ -11,8 +20,11 @@
     <!--Row met de button-->
     <div class=“row”>
         <div class=“col-md-12”>
+            <div class="card-body text-center">
+
             <!--Button target zorgt ervoor dat het de modal van new Category laat zien (Dus ga naar de Modal later in de pagina-->
-            <button type="button" data-toggle="modal" data-target="#newCategoryModal">New Category</button>
+            <button class="btn-secondary" type="button" data-toggle="modal" data-target="#newCategoryModal">New Category</button>
+            </div>
         </div>
     </div>
 
@@ -27,14 +39,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Voorgerecht</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Hoofdgerecht</td>
-                </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Voorgerechten</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Hoofdgerechten</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Nagerechten</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dranken</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -73,3 +93,6 @@
 <!-- End of new Category Modal -->
 </div>
 
+<script>$(document).ready(function () {
+            $("#table").DataTable();
+        }); </script>
