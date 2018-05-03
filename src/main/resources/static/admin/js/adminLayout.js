@@ -7,3 +7,8 @@ $('#catSubmitBtn').click(function(e) {
        title: title
    });
 });
+
+$('#hrefTest').click(function (e) {
+    e.preventDefault();
+    alert("Hoi");
+});

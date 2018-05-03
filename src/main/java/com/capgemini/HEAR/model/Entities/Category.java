@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class Category extends Base {
 
-       @OneToMany(mappedBy = "category", cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL )
     private List<SubCategory> subCategories;
 
     public Category() {}

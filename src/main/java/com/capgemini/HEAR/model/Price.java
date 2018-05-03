@@ -3,7 +3,7 @@ package com.capgemini.HEAR.model;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Price extends Base {
+public abstract class Price extends Base {
 
     private double costPrice;
     private double sellingPrice;
