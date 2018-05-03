@@ -1,22 +1,28 @@
 package com.capgemini.HEAR.model;
 
-public abstract class Price extends Base {
+import javax.persistence.MappedSuperclass;
 
-    private double price;
+@MappedSuperclass
+public class Price extends Base {
 
-    public Price(){}
+    private double costPrice;
+    private double sellingPrice;
 
-    public double getPrice() {
-        return price;
+    public Price() {}
+
+    public double getSellingPrice() {
+        return sellingPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setSellingPrice(double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 
-    public Price(String name, double price){
-        super(name);
-        this.price = price;
+    public double getCostPrice() {
+        return costPrice;
     }
 
+    public void setCostPrice(double costPrice) {
+        this.costPrice = costPrice;
+    }
 }

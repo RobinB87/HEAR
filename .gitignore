@@ -31,3 +31,4 @@
 .idea/misc.xml
 .idea/description.html
 *.iml
+/src/main/resources/application.properties
