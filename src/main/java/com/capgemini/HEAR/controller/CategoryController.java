@@ -1,6 +1,6 @@
 package com.capgemini.HEAR.controller;
 
-import com.capgemini.HEAR.model.Category;
+import com.capgemini.HEAR.model.Entities.Category;
 import com.capgemini.HEAR.repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

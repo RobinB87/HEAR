@@ -1,26 +1,20 @@
 package com.capgemini.HEAR.model;
 
-import lombok.Data;
-
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Data
-public class Dish {
+@MappedSuperclass
+public abstract class Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String title;
 
-    public Dish(String title) {
-        this.title = title;
-    }
-
-    public Dish() {}
+    public Base() {}
 
     public int getId() {
         return id;
