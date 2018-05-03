@@ -8,7 +8,18 @@ $('#catSubmitBtn').click(function(e) {
    });
 });
 
-$('#hrefTest').click(function (e) {
-    e.preventDefault();
-    alert("Hoi");
+$('#createCategory').click(function(e) {
+e.preventDefault();
+   $.get('category/create.html', function(data) {
+       $('#content-box-hear').html(data);
+   });
 });
+
+$('#viewCategory').click(function(e) {
+e.preventDefault();
+    $.get('category/index.html', function(data) {
+        $('#content-box-hear').html(data);
+
+        });
+        
+        });
