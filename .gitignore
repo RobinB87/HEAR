@@ -32,3 +32,4 @@
 .idea/description.html
 *.iml
 /src/main/resources/application.properties
+/target/
