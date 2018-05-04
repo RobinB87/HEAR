@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DataTable Zero Configuration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+
+        
+
+        $(document).ready(function () {
+            $("#table").DataTable();
+        });
+
+    </script>
+</head>
+
+<body>
+
+
+    <!--Volle Container voor de hele pagina!-->
+    <div class="container bg-info">
+
+        <!----Jumbotron, for banners etc-->
+        <div class="jumbotron jumbotron-fluid text-center bg-info">
+            <div class="container">
+                <h1 class="display-1">Admin Page</h1>
+                <p class="lead"> Categories </p>
+            </div>
+        </div>
+
+        <!--Row met de button-->
+         <div class=“row”>
+            <div class=“col-md-12”>
+                <!--Button target zorgt ervoor dat het de modal van new Category laat zien (Dus ga naar de Modal later in de pagina-->
+                <button type="button" data-toggle="modal" data-target="#newCategoryModal">New Category</button>
+            </div>
+        </div>
+
+        <div class=“row”>
+            <div class=“col-md-12”>
+                <h2></h2>
+                <table id="table" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- New Category Modal POP UP AlS JE OP CREATE DRUKT-->
+        <div id="newCategoryModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Category</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form data-toggle="validator" role="form" id="newCategoryForm" onsubmit="return false;">
+                            <div class="form-group">
+                                <label for="inputTitle" class="control-label">Title of Category</label>
+                                <input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputAuthor" class="control-label">Author of Category</label>
+                                <input type="text" class="form-control" id="inputAuthor" placeholder="Who's the author?" required>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- End of new Category Modal -->
+    </div>
+
+<script src="js/admin.js"></script>
+	
+</body>
+
+</html>
