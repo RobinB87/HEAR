@@ -12,13 +12,13 @@ public class CategoryController {
     @Autowired
     ICategoryRepository categoryRepository;
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public Iterable<Category> getCategories() {
         return categoryRepository.findAll();
     }
 
     @PostMapping("/add")
-    public Category addCategory(Category category) {
+    public Category addCategory(@RequestBody Category category) {
         return categoryRepository.save(category);
     }
 }
