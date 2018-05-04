@@ -20,17 +20,11 @@ public class SubCategoryController {
 
     /**
      * Add a subcategory in the webpage
-     * @param title
-     * @param categoryid
-     * @return
      */
-    @GetMapping("/add/{title}/{categoryid}")
-    public SubCategory addSubCategory(@PathVariable String title, @PathVariable int categoryid){
-        SubCategory subCategory = new SubCategory();
-        subCategory.setCategory(categoryRepository.findById(categoryid).isPresent() ? categoryRepository.findById(categoryid).get() : null);
-        subCategory.setTitle(title);
 
-        return subCategoryRepository.save(subCategory);
+    @PostMapping("/add/")
+    public SubCategory addSubCategory(SubCategory subcategory){
+        return subCategoryRepository.save(subcategory);
     }
 
     @GetMapping("/get/{id}")
