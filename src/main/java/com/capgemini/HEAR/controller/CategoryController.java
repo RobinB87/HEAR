@@ -17,7 +17,7 @@ public class CategoryController {
         return categoryRepository.findAll();
     }
 
-    @PostMapping("/add/")
+    @PostMapping("/add")
     public Category addCategory(Category category) {
         return categoryRepository.save(category);
     }

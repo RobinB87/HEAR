@@ -1,6 +1,7 @@
 package com.capgemini.HEAR.controller;
 
 import com.capgemini.HEAR.model.Entities.Dish;
+import com.capgemini.HEAR.model.Entities.Drink;
 import com.capgemini.HEAR.repository.IDishRepository;
 import com.capgemini.HEAR.repository.IDrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,16 @@ public class MenuItemController {
     @Autowired
     private IDrinkRepository drinkRepository;
 
-    @PostMapping("/api/dish/add")
-    public void addDish(@RequestBody Dish dish){
-        dishRepository.save(dish);
+    @PostMapping("/dish/add")
+    public Dish addDish(Dish dish){
+       return dishRepository.save(dish);
     }
+
+    @PostMapping("/drink/add")
+    public Drink addDrink(Drink drink) {
+        return drinkRepository.save(drink);
+    }
+
 
 //    @PostMapping("/api/drink/add")
 //    public

@@ -19,7 +19,7 @@ $("#addCategoryBtn").click(function (e) {
 
     var title = $('#titleField').val();
 
-    $.post('/api/category/add/', {
+    $.post('/api/category/add', {
         title: title
     });
 });

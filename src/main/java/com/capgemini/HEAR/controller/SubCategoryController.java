@@ -51,7 +51,6 @@ public class SubCategoryController {
         return subCategoryRepository.save(subCategory);
     }
 
-
     //delete subcategories
     @GetMapping("/delete/{id}")
     public void deleteSubCategory(@PathVariable int id){
@@ -59,8 +58,6 @@ public class SubCategoryController {
             subCategoryRepository.deleteById(id);
         }
     }
-
-
 
     //validatie if isPresent() else null. Dit moet elke find / .get doen!
 
