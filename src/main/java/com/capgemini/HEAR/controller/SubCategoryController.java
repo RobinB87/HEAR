@@ -40,7 +40,7 @@ public class SubCategoryController {
         return subCategoryRepository.findAll();
     }
 
-    //edit subcategories
+    //edit subcategories -> moet postmapping worden
     @GetMapping("/edit/{id}/{title}/{categoryid}")
     public SubCategory editSubCategory(@PathVariable int id, @PathVariable String title, @PathVariable int categoryid){
 
@@ -53,6 +53,14 @@ public class SubCategoryController {
 
 
     //delete subcategories
+    @GetMapping("/delete/{id}")
+    public void deleteSubCategory(@PathVariable int id){
+        if(subCategoryRepository.findById(id).isPresent()) {
+            subCategoryRepository.deleteById(id);
+        }
+    }
+
+
 
     //validatie if isPresent() else null. Dit moet elke find / .get doen!
 
