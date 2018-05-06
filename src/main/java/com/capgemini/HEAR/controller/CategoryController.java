@@ -21,4 +21,17 @@ public class CategoryController {
     public Category addCategory(Category category) {
         return categoryRepository.save(category);
     }
+
+    //get id
+    @GetMapping("/get/{id}")
+    public Category getCategory(@PathVariable int id) {
+
+        return categoryRepository.findById(id).isPresent() ? categoryRepository.findById(id).get() : null;
+
+//
+//        if (categoryRepository.findById(id).isPresent()) {
+//            Category category = categoryRepository.findById(id).get();
+//        }
+//        return null;
+    }
 }
