@@ -1,0 +1,18 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Ingredients</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Create Category</li>
+    </ol>
+</nav>
+
+<div>
+    <form method="post" id="addDishForm">
+        <input type="text" name="title" id="dishTitleField">
+        <input type="number" name="price" id="dishPriceField">
+        <input type="range" name="ingredientList" id="dishIngredientListField">
+        <button type="submit" id="addDishBtn">Submit</button>
+    </form>
+</div>
+
+<script src="../admin/js/dish.js"></script>
