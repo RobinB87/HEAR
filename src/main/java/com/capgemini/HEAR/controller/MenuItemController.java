@@ -27,7 +27,11 @@ public class MenuItemController {
         return dishRepository.findAll();
     }
 
-    //get id
+    @GetMapping("/dish/get/{id}")
+    public Dish getDish(@PathVariable int id){
+        return dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null;
+    }
+
     //edit
     //delete
 
@@ -42,7 +46,11 @@ public class MenuItemController {
         return drinkRepository.findAll();
     }
 
-    //get id
+    @GetMapping("/drink/get/{id}")
+    public Drink getDrink(@PathVariable int id){
+        return drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null;
+    }
+
     //edit
     //delete
 
