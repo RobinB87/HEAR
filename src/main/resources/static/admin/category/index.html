@@ -57,12 +57,12 @@
 
                 <form data-toggle="validator" role="form" id="newCategoryForm" onsubmit="return false;">
                     <div class="form-group">
-                        <label for="inputName" class="control-label">Name of Category</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
+                        <label for="titleField" class="control-label">Name of Category</label>
+                        <input type="text" class="form-control" id="titleField" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
                     </div>
 
                     <div class="form-group">
-                        <button type="addCategoryBtn" class="btn btn-primary">Submit</button>
+                        <button id="addCategoryBtn" type="submitBtn" class="btn btn-primary" data-dismiss="modal">Submit</button>
                         <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </form>
