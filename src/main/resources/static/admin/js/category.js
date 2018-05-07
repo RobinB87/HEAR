@@ -23,7 +23,7 @@ $(document).ready(function () {
             ]
     });
 
-    $('#categoryTable tbody').on('click', 'button', function () {
+    $('#categoryTable tbody').on('click', '.editBtn', function () {
         var data = table.row($(this).parents('tr')).data();
 
         $('#categoryIdField').val(data.id);
