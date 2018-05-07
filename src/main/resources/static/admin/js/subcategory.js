@@ -3,7 +3,7 @@ $("#addSubCategoryBtn").click(function(e) {
 
     var title = $('#titleField').val();
 
-    $.post('/api/subcategory/add/', {
+    $.post('/api/subcategory/add', {
         title: title
     });
 });
