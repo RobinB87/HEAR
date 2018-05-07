@@ -11,10 +11,16 @@ $(document).ready(function () {
             {"data": "id"},
             {"data": "title"},
             {
+                "targets": -2,
+                "data": null,
+                "defaultContent": "<button class='btn btn-default editBtn'>Edit</button>"
+            },
+            {
                 "targets": -1,
                 "data": null,
-                "defaultContent": "<button class='btn btn-default'>Edit</button>"
-            }]
+                "defaultContent": "<button class='btn btn-default deleteBtn'>Delete</button>"
+            }
+            ]
     });
 
     $('#categoryTable tbody').on('click', 'button', function () {
