@@ -10,7 +10,7 @@ $('#catSubmitBtn').click(function(e) {
 
 $('#createCategory').click(function(e) {
 e.preventDefault();
-   $.get('category/create.html', function(data) {
+   $.get('category/index.html', function(data) {
        $('#content-box-hear').html(data);
    });
 });
