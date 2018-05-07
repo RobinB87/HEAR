@@ -1,17 +1,26 @@
 // DataTable for categories
 $(document).ready(function () {
-    $("#categoryTable").DataTable({
+    var table = $("#categoryTable").DataTable({
         "processing": true,
         "serverSide": true,
         'ajax': {
             'url': '/api/category/all',
             'dataSrc': ''
         },
-        'columns': [
+        "columns": [
             {"data": "id"},
-            {"data": "title"}
-        ]
+            {"data": "title"},
+            {
+                "targets": -1,
+                "data": null,
+                "defaultContent": "<button class='btn btn-default'>Edit</button>"
+            }]
     });
+
+    $('#categoryTable tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        alert('You want to edit: ' + data.title + ' with id: ' + data.id );
+    } );
 });
 
 $("#addCategoryBtn").click(function (e) {
