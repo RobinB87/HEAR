@@ -52,7 +52,15 @@ public class SubCategoryController {
         return subCategoryRepository.findAll();
     }
 
-    //return all subcategories
+
+    @GetMapping("/formatted/get/{id}")
+    public SubCategoryDTO getSubCategoryDTO(@PathVariable int id) {
+        SubCategory subCategory = subCategoryRepository.findById(id).isPresent() ? subCategoryRepository.findById(id).get() : null;
+
+        SubCategoryDTO dto = new SubCategoryDTO(subCategory);
+        return dto;
+    }
+
     @GetMapping("/formatted/all")
     public List<SubCategoryDTO> subCategories() {
 
@@ -63,7 +71,6 @@ public class SubCategoryController {
         }
 
         return subCategoryList;
-
     }
 
     //edit subcategories
