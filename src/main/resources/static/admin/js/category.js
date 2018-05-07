@@ -1,6 +1,5 @@
 // DataTable for categories
 $(document).ready(function () {
-    var myEditor;
     $("#categoryTable").DataTable({
         "processing": true,
         "serverSide": true,
@@ -11,11 +10,6 @@ $(document).ready(function () {
         'columns': [
             {"data": "id"},
             {"data": "title"}
-        ],
-        'buttons': [
-            { extend: 'create', editor: myEditor },
-            { extend: 'edit',   editor: myEditor },
-            { extend: 'remove', editor: myEditor }
         ]
     });
 });
