@@ -3,7 +3,7 @@ $(document).ready(function () {
         "processing": true,
         "serverSide": true,
         'ajax': {
-            'url': '/api/subcategory/all',
+            'url': '/api/subcategory/formatted/all',
             'dataSrc': ''
         },
         'columns': [
