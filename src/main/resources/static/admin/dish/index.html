@@ -2,9 +2,9 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Dish</a></li>
-        <li class="breadcrumb-item active" aria-current="page">View Dishes</li>
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Menu Items</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Dishes</li>
     </ol>
 </nav>
 
@@ -56,15 +56,14 @@
 
                     <form data-toggle="validator" role="form" id="newCategoryForm" onsubmit="return false;">
                         <div class="form-group">
-                            <label for="inputName" class="control-label">Name of Category</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
+                            <label for="categoryTitleField" class="control-label">Name of Category</label>
+                            <input type="text" class="form-control" id="categoryTitleField" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
                         </div>
 
                         <div class="form-group">
-                            <button type="submitBtn" class="btn btn-primary">Submit</button>
+                            <button id="addCategoryBtn" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                             <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -74,4 +73,4 @@
     <!-- End of new Category Modal -->
 </div>
 
-<script src="../admin/js/ingredient.js"></script>
+<script src="../admin/js/category.js"></script>

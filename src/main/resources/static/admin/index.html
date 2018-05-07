@@ -26,6 +26,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <!--Homepage-->
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -33,38 +34,26 @@
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Homepage</span>
                 </a>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">Category</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseMulti">
-                    <li>
-                        <a id="createCategory" href="#">Create Category</a>
-                    </li>
-                    <li>
-                        <a id="viewCategory" href="#">View Category List</a>
-                    </li>
-                </ul>
             </li>
+            <!--Category-->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti1" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">Subcategory</span>
+                <a  class="nav-link" id="viewCategory" href="#">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Categories</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseMulti1">
-                    <li>
-                        <a id="createSubcategory" href="#">Create Subcategory</a>
-                    </li>
-                    <li>
-                        <a id="viewSubcategory" href="#">View Subcategory List</a>
-                    </li>
-                </ul>
             </li>
+<!--Subcategorie-->
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+                <a  class="nav-link" id="viewSubcategory" href="#">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Subcategories</span>
+                </a>
+            </li>
+<!--Menu Items Dropdown: Dishes en drinks:-->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">Menu Item</span>
+                    <span class="nav-link-text">Menu Items</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMulti2">
                     <li>
@@ -75,20 +64,14 @@
                     </li>
                 </ul>
             </li>
+            <!--Ingredient-->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti3" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">Ingredient</span>
+                <a  class="nav-link" id="viewIngredient" href="#">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Ingredients</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseMulti3">
-                    <li>
-                        <a id="createIngredient" href="#">Create Ingredient</a>
-                    </li>
-                    <li>
-                        <a id="viewIngredient" href="#">View Ingredient List</a>
-                    </li>
-                </ul>
             </li>
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-link"></i>
