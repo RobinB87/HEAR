@@ -17,7 +17,7 @@ $(document).ready(function () {
 $("#addCategoryBtn").click(function (e) {
     e.preventDefault();
 
-    var title = $('#titleField').val();
+    var title = $('#categoryTitleField').val();
 
     $.post('/api/category/add', {
         title: title
