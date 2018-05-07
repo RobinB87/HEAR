@@ -19,7 +19,7 @@ public class CategoryController {
     }
 
     @PostMapping("/add")
-    public Category addCategory(Category category) {
+    public Category addCategory(@RequestBody Category category) {
         return categoryRepository.save(category);
     }
 

@@ -1,3 +1,19 @@
+$(document).ready(function () {
+    $("#subCategoryTable").DataTable({
+        "processing": true,
+        "serverSide": true,
+        'ajax': {
+            'url': '/api/subcategory/all',
+            'dataSrc': ''
+        },
+        'columns': [
+            {"data": "id"},
+            {"data": "title"},
+            {"data": "categoryTitle"}
+        ]
+    });
+});
+
 var categoryArray = [];
 
 $.ajax({
@@ -28,15 +44,20 @@ $('#closeButton').click(function() {
 
 $(document).ready(function() {
     $('#categoryListSelect2').select2();
-});
 
+    $('#subCategorySubmitBtn').click(function (e) {
+        e.preventDefault();
+        console.log("erin");
 
-$("#addSubCategoryBtn").click(function (e) {
-    e.preventDefault();
+        var title = $('#subCategoryTitleField').val();
+        var categoryId = $('#categoryListSelect2').val();
 
-    var title = $('#titleField').val();
+        $.post('/api/subcategory/add/' + categoryId, {
+            title: title
+        });
 
-    $.post('/api/subcategory/add', {
-        title: title
+        $('#subCategoryTitleField').empty();
     });
 });
+
+

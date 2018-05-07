@@ -22,4 +22,8 @@ public class Category extends Base {
     public void setSubCategories(List<SubCategory> subCategories) {
         this.subCategories = subCategories;
     }
+
+    public void addSubCategory(SubCategory subCategory) {
+        this.subCategories.add(subCategory);
+    }
 }

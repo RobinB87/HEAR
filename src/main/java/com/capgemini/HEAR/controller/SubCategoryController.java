@@ -1,10 +1,15 @@
 package com.capgemini.HEAR.controller;
 
+import com.capgemini.HEAR.model.DTO.SubCategoryDTO;
+import com.capgemini.HEAR.model.Entities.Category;
 import com.capgemini.HEAR.model.Entities.SubCategory;
 import com.capgemini.HEAR.repository.ICategoryRepository;
 import com.capgemini.HEAR.repository.ISubCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/subcategory")
@@ -20,9 +25,15 @@ public class SubCategoryController {
      * Add a subcategory in the webpage
      */
 
-    @PostMapping("/add")
-    public SubCategory addSubCategory(SubCategory subcategory) {
-        return subCategoryRepository.save(subcategory);
+    @PostMapping("/add/{categoryId}")
+    public SubCategory addSubCategory(@PathVariable int categoryId, SubCategory subcategory) {
+
+        Category category = categoryRepository.findById(categoryId).isPresent() ? categoryRepository.findById(categoryId).get() : null;
+        subcategory.setCategory(category);
+        category.addSubCategory(subcategory);
+        categoryRepository.save(category);
+
+        return subcategory;
     }
 
     //return one subcategory by an id
@@ -36,10 +47,23 @@ public class SubCategoryController {
         return null;
     }
 
-    //return all subcategories
     @GetMapping("/all")
-    public Iterable<SubCategory> subCategories() {
+    public Iterable<SubCategory> getAll() {
         return subCategoryRepository.findAll();
+    }
+
+    //return all subcategories
+    @GetMapping("/formatted/all")
+    public List<SubCategoryDTO> subCategories() {
+
+        List<SubCategoryDTO> subCategoryList = new ArrayList<>();
+        for(SubCategory subCategory : subCategoryRepository.findAll()) {
+            SubCategoryDTO dto = new SubCategoryDTO(subCategory);
+            subCategoryList.add(dto);
+        }
+
+        return subCategoryList;
+
     }
 
     //edit subcategories

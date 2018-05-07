@@ -1,5 +1,7 @@
 package com.capgemini.HEAR.model;
 
+import com.sun.corba.se.spi.ior.Identifiable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
