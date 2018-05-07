@@ -6,8 +6,6 @@ import com.capgemini.HEAR.repository.ISubCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/subcategory")
 public class SubCategoryController {
@@ -22,43 +20,54 @@ public class SubCategoryController {
      * Add a subcategory in the webpage
      */
 
-    @PostMapping("/add/")
-    public SubCategory addSubCategory(SubCategory subcategory){
+    @PostMapping("/add")
+    public SubCategory addSubCategory(SubCategory subcategory) {
         return subCategoryRepository.save(subcategory);
     }
 
+    //return one subcategory by an id
     @GetMapping("/get/{id}")
-    public SubCategory getSubCategory(@PathVariable int id){
-        SubCategory subCategory = subCategoryRepository.findById(id).get();
+    public SubCategory getSubCategory(@PathVariable int id) {
 
-        return subCategory;
+        if (subCategoryRepository.findById(id).isPresent()) {
+            SubCategory subCategory = subCategoryRepository.findById(id).get();
+            return subCategory;
+        }
+        return null;
     }
 
     //return all subcategories
     @GetMapping("/all")
-    public Iterable<SubCategory> subCategories(){
+    public Iterable<SubCategory> subCategories() {
         return subCategoryRepository.findAll();
     }
 
-    //edit subcategories -> moet postmapping worden
-    @GetMapping("/edit/{id}/{title}/{categoryid}")
-    public SubCategory editSubCategory(@PathVariable int id, @PathVariable String title, @PathVariable int categoryid){
+    //edit subcategories
+    @GetMapping("/edit/v2/{id}/{title}/{categoryid}")
+    public SubCategory editSubCategoryv2(@PathVariable int id, @PathVariable String title, @PathVariable int categoryid) {
 
-        SubCategory subCategory = subCategoryRepository.findById(id).get();
-        subCategory.setTitle(title);
-        subCategory.setCategory(categoryRepository.findById(categoryid).get());
+        if (subCategoryRepository.findById(id).isPresent()) {
+            SubCategory subCategory = subCategoryRepository.findById(id).get();
+            subCategory.setTitle(title);
+            subCategory.setCategory(categoryRepository.findById(categoryid).get());
 
+            return subCategoryRepository.save(subCategory);
+        }
+        return null;
+    }
+
+    //postmapping voor edit subcategories -> dan kan de bovenstaande edit getmapping weg.
+    @PostMapping("/edit")
+    public SubCategory editSubcategory(SubCategory subCategory){
         return subCategoryRepository.save(subCategory);
     }
 
     //delete subcategories
     @GetMapping("/delete/{id}")
-    public void deleteSubCategory(@PathVariable int id){
-        if(subCategoryRepository.findById(id).isPresent()) {
+    public SubCategory deleteSubCategory(@PathVariable int id) {
+        if (subCategoryRepository.findById(id).isPresent()) {
             subCategoryRepository.deleteById(id);
         }
+        return null;
     }
-
-    //validatie if isPresent() else null. Dit moet elke find / .get doen!
-
 }
