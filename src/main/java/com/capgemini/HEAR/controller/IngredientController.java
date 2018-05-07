@@ -18,7 +18,7 @@ public class IngredientController  {
     }
 
     @PostMapping("/add")
-    public Ingredient addIngredient(@RequestBody Ingredient ingredient){
+    public Ingredient addIngredient(Ingredient ingredient){
         return ingredientRepository.save(ingredient);
     }
 

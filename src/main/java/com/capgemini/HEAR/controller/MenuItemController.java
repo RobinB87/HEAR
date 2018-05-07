@@ -18,7 +18,7 @@ public class MenuItemController {
     private IDrinkRepository drinkRepository;
 
     @PostMapping("/dish/add")
-    public Dish addDish(@RequestBody Dish dish) {
+    public Dish addDish(Dish dish) {
         return dishRepository.save(dish);
     }
 
