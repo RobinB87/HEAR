@@ -30,19 +30,10 @@ public class CategoryController {
         return categoryRepository.findById(id).isPresent() ? categoryRepository.findById(id).get() : null;
     }
 
-    //edit
-    @GetMapping("/edit/{id}/{title}")
-    public Category editCategory(@PathVariable int id, @PathVariable String title){
-
-        if(categoryRepository.findById(id).isPresent()){
-            Category category = categoryRepository.findById(id).get();
-            category.setTitle(title);
-
-            return categoryRepository.save(category);
-        }
-        return null;
+    @PostMapping("/edit")
+    public Category editCategory(Category category) {
+        return categoryRepository.save(category);
     }
-
 
 
     //delete

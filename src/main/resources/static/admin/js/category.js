@@ -17,10 +17,22 @@ $(document).ready(function () {
             }]
     });
 
-    $('#categoryTable tbody').on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        alert('You want to edit: ' + data.title + ' with id: ' + data.id );
-    } );
+    $('#categoryTable tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#categoryIdField').val(data.id);
+        $('#editCategoryTitleField').val(data.title);
+
+        $("#editCategoryModal").modal();
+
+        $('#editCategoryBtn').click(function () {
+            var title = $('#editCategoryTitleField').val();
+            $.post('/api/category/edit', {
+                id: data.id,
+                title: title
+            });
+        });
+    });
 });
 
 $("#addCategoryBtn").click(function (e) {
