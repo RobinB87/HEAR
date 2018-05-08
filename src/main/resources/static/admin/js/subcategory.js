@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#subCategoryTable").DataTable({
+    var table = $("#subCategoryTable").DataTable({
         "processing": true,
         "serverSide": true,
         'ajax': {
@@ -17,38 +17,36 @@ $(document).ready(function () {
             }
         ]
     });
-});
 
-var categoryArray = [];
+    var categoryArray = [];
 
-$.ajax({
-    type: 'GET',
-    url: '/api/category/all',
-    dataType: 'json',
-    success: function (data) {
-        $.each(data, function (i, itemData) {
-            categoryArray[i] = itemData;
-        });
-    }
-});
+    $.ajax({
+        type: 'GET',
+        url: '/api/category/all',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (i, itemData) {
+                categoryArray[i] = itemData;
+            });
+        }
+    });
 
-$('#newSubcategoryModal').click(function () {
-    for (var i = 0; i < categoryArray.length; i++) {
-        $('#categoryListSelect2')
-            .append($("<option></option>")
-                .attr("value", categoryArray[i].id)
-                .text(categoryArray[i].title));
-    }
-});
+    $('#newSubcategoryModal').click(function () {
+        for (var i = 0; i < categoryArray.length; i++) {
+            $('#categoryListSelect2')
+                .append($("<option></option>")
+                    .attr("value", categoryArray[i].id)
+                    .text(categoryArray[i].title));
+        }
+    });
 
-$('#closeButton').click(function () {
-    for (var i = 0; i < categoryArray.length; i++) {
-        $('#categoryListSelect2').empty();
-    }
-});
+    $('#closeButton').click(function () {
+        for (var i = 0; i < categoryArray.length; i++) {
+            $('#categoryListSelect2').empty();
+        }
+    });
 
-$(document).ready(function () {
-    $('#categoryListSelect2').select2();
+    $('.categoryListSelect2').select2();
 
     $('#subCategorySubmitBtn').click(function (e) {
         e.preventDefault();
@@ -58,8 +56,8 @@ $(document).ready(function () {
 
         $.post('/api/subcategory/add/' + categoryId, {
             title: title
-        }, function() {
-            $('#subCategoryTable').DataTable().clear().draw();
+        }, function () {
+            table.clear().draw();
         });
 
         $('#subCategoryTitleField').empty();
