@@ -6,10 +6,20 @@ $(document).ready(function () {
             'url': '/api/subcategory/formatted/all',
             'dataSrc': ''
         },
-        'columns': [
+        "columns": [
             {"data": "id"},
             {"data": "title"},
-            {"data": "categoryTitle"}
+            {"data": "categoryTitle"},
+            {
+                "targets": -2,
+                "data": null,
+                "defaultContent": "<button class='btn btn-default editBtn'>Edit</button>"
+            },
+            {
+                "targets": -1,
+                "data": null,
+                "defaultContent": "<button class='btn btn-default deleteBtn'>Delete</button>"
+            }
         ]
     });
 });
