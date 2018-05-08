@@ -1,8 +1,6 @@
 // DataTable for categories
 $(document).ready(function () {
     var table = $("#categoryTable").DataTable({
-        "processing": true,
-        "serverSide": true,
         'ajax': {
             'url': '/api/category/all',
             'dataSrc': ''

@@ -1,7 +1,5 @@
 $(document).ready(function () {
     var table = $("#subCategoryTable").DataTable({
-        "processing": true,
-        "serverSide": true,
         'ajax': {
             'url': '/api/subcategory/formatted/all',
             'dataSrc': ''
