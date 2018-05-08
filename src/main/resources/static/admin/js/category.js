@@ -22,8 +22,8 @@ $(document).ready(function () {
             }
             ]
     });
-
-    $('#categoryTable tbody').on('click', 'button', function () {
+    // Edit button
+    $('#categoryTable tbody').on('click', '.editBtn', function () {
         var data = table.row($(this).parents('tr')).data();
 
         $('#categoryIdField').val(data.id);
@@ -36,10 +36,32 @@ $(document).ready(function () {
             $.post('/api/category/edit', {
                 id: data.id,
                 title: title
+            }, function() {
+                $('#categoryTable').DataTable().clear().draw();
+            });
+        });
+        table.draw();
+    });
+
+
+    $('#categoryTable tbody').on('click', '.deleteBtn', function () {       //categoryTable is de tabel
+        var data = table.row($(this).parents('tr')).data();                 //get data of this row
+
+        // get the values of this Id category:
+        $('#categoryIdField').val(data.id);         //get id
+        $("#deleteCategoryModal").modal();      //open comfirmation
+
+        $('#deleteCategoryBtn').click(function () {           //button function
+            $.post('/api/category/delete/' + data.id, {
+
+            }, function() {
+                $('#categoryTable').DataTable().clear().draw();
             });
         });
     });
+
 });
+
 
 $("#addCategoryBtn").click(function (e) {
     e.preventDefault();
@@ -48,6 +70,8 @@ $("#addCategoryBtn").click(function (e) {
 
     $.post('/api/category/add', {
         title: title
+    }, function() {
+        $('#categoryTable').DataTable().clear().draw();
     });
 });
 
