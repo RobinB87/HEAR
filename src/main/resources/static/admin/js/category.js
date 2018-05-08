@@ -22,7 +22,7 @@ $(document).ready(function () {
             }
             ]
     });
-
+    // Edit button
     $('#categoryTable tbody').on('click', '.editBtn', function () {
         var data = table.row($(this).parents('tr')).data();
 
@@ -38,8 +38,27 @@ $(document).ready(function () {
                 title: title
             });
         });
+        table.draw();
     });
+    // DELETE BUTTON
+    $('#categoryTable tbody').on('click', '.deleteBtn', function () {       //categoryTable is de tabel
+        var data = table.row($(this).parents('tr')).data();                 //get data of this row
+
+        // get the values of this Id category:
+        $('#categoryIdField').val(data.id);         //get id
+        $("#deleteCategoryModal").modal();      //open comfirmation
+
+        $('#deleteCategoryBtn').click(function () {           //button function
+            $.post('/api/category/delete/data.id', {
+
+            });
+            window.alert("deleted? "+ data.id);
+        });
+    });
+
 });
+
+
 
 $("#addCategoryBtn").click(function (e) {
     e.preventDefault();

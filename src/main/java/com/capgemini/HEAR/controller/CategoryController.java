@@ -5,6 +5,8 @@ import com.capgemini.HEAR.repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/category")
@@ -35,6 +37,13 @@ public class CategoryController {
         return categoryRepository.save(category);
     }
 
-
     //delete
+    @PostMapping("/delete/{id}")
+    public void deleteCategory(@PathVariable int id) {
+
+        System.out.println("try to delete");
+
+        categoryRepository.deleteById(id);
+    }
+
 }
