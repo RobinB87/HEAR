@@ -77,4 +77,16 @@ $("#addCategoryBtn").click(function (e) {
 
 
 
+$("#newCategoryModal").click(function(e) {
+    e.preventDefault();
+        $.get('category/createModal.html', function(data) {
+            $('#categoryModalContent').html(data);
+        })
+    });
 
+// $('#viewIngredient').click(function(e) {
+//     e.preventDefault();
+//     $.get('ingredients/index.html', function(data) {
+//         $('#content-box-hear').html(data);
+//     });
+// });
