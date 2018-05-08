@@ -25,6 +25,7 @@ public class SubCategoryController {
      * Add a subcategory in the webpage
      */
 
+    //add a subcategory and match to category id
     @PostMapping("/add/{categoryId}")
     public SubCategory addSubCategory(@PathVariable int categoryId, SubCategory subcategory) {
 
@@ -36,7 +37,7 @@ public class SubCategoryController {
         return subcategory;
     }
 
-    //return one subcategory by an id
+    //return a subcategory by an id
     @GetMapping("/get/{id}")
     public SubCategory getSubCategory(@PathVariable int id) {
 
@@ -47,12 +48,14 @@ public class SubCategoryController {
         return null;
     }
 
+    //return all subcategories
     @GetMapping("/all")
     public Iterable<SubCategory> getAll() {
         return subCategoryRepository.findAll();
     }
 
 
+    //
     @GetMapping("/formatted/get/{id}")
     public SubCategoryDTO getSubCategoryDTO(@PathVariable int id) {
         SubCategory subCategory = subCategoryRepository.findById(id).isPresent() ? subCategoryRepository.findById(id).get() : null;
@@ -61,6 +64,7 @@ public class SubCategoryController {
         return dto;
     }
 
+    //data transformatie - presentatie model - die vul je met data model
     @GetMapping("/formatted/all")
     public List<SubCategoryDTO> subCategories() {
 
@@ -73,27 +77,13 @@ public class SubCategoryController {
         return subCategoryList;
     }
 
-    //edit subcategories
-    @GetMapping("/edit/v2/{id}/{title}/{categoryid}")
-    public SubCategory editSubCategoryv2(@PathVariable int id, @PathVariable String title, @PathVariable int categoryid) {
-
-        if (subCategoryRepository.findById(id).isPresent()) {
-            SubCategory subCategory = subCategoryRepository.findById(id).get();
-            subCategory.setTitle(title);
-            subCategory.setCategory(categoryRepository.findById(categoryid).get());
-
-            return subCategoryRepository.save(subCategory);
-        }
-        return null;
-    }
-
-    //postmapping voor edit subcategories -> dan kan de bovenstaande edit getmapping weg.
+    //edit one subcategory
     @PostMapping("/edit")
     public SubCategory editSubcategory(SubCategory subCategory){
         return subCategoryRepository.save(subCategory);
     }
 
-    //delete subcategories
+    //delete one subcategory by id
     @GetMapping("/delete/{id}")
     public SubCategory deleteSubCategory(@PathVariable int id) {
         if (subCategoryRepository.findById(id).isPresent()) {

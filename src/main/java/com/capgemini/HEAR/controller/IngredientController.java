@@ -12,6 +12,11 @@ public class IngredientController  {
     @Autowired
     private IIngredientRepository ingredientRepository;
 
+    /**
+     * Ingredients: same methods as in category and subcategory
+     * @return
+     */
+
     @GetMapping("/all")
     public Iterable<Ingredient> getIngredients(){
         return ingredientRepository.findAll();
@@ -27,6 +32,16 @@ public class IngredientController  {
         return ingredientRepository.findById(id).isPresent() ? ingredientRepository.findById(id).get() : null;
     }
 
-    //edit
-    //delete
+    @PostMapping("/edit")
+    public Ingredient editIngredient(Ingredient ingredient){
+        return ingredientRepository.save(ingredient);
+    }
+
+    @GetMapping("/delete/{id}")
+    public Ingredient deleteIngredient(@PathVariable int id){
+        if(ingredientRepository.findById(id).isPresent()){
+            ingredientRepository.deleteById(id);
+        }
+        return null;
+    }
 }

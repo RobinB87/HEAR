@@ -7,6 +7,8 @@ import com.capgemini.HEAR.repository.IDrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
+
 @RestController
 @RequestMapping("/api/menuitem")
 public class MenuItemController {
@@ -16,6 +18,13 @@ public class MenuItemController {
 
     @Autowired
     private IDrinkRepository drinkRepository;
+
+
+    /**
+     * Dishes: same methods as in category and subcategory
+     * @param dish
+     * @return
+     */
 
     @PostMapping("/dish/add")
     public Dish addDish(Dish dish) {
@@ -32,11 +41,25 @@ public class MenuItemController {
         return dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null;
     }
 
+    @PostMapping("/dish/edit")
+    public Dish editDish(Dish dish){
+        return dishRepository.save(dish);
+    }
+
+    @GetMapping("/dish/delete/{id}")
+    public Dish deleteDish(@PathVariable int id){
+        if(dishRepository.findById(id).isPresent()){
+            dishRepository.deleteById(id);
+        }
+        return null;
+    }
 
 
-    //edit
-    //delete
-
+    /**
+     * Drinks: same methods as in category and subcategory
+     * @param drink
+     * @return
+     */
 
     @PostMapping("/drink/add")
     public Drink addDrink(Drink drink) {
@@ -53,7 +76,16 @@ public class MenuItemController {
         return drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null;
     }
 
-    //edit
-    //delete
+    @PostMapping("/drink/edit")
+    public Drink editDrink(Drink drink){
+        return drinkRepository.save(drink);
+    }
 
+    @GetMapping("/drink/delete/{id}")
+    public Drink deleteDrink(@PathVariable int id){
+        if(drinkRepository.findById(id).isPresent()){
+            drinkRepository.deleteById(id);
+        }
+        return null;
+    }
 }
