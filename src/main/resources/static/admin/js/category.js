@@ -11,14 +11,9 @@ $(document).ready(function () {
             {"data": "id"},
             {"data": "title"},
             {
-                "targets": -2,
-                "data": null,
-                "defaultContent": "<button class='btn btn-default editBtn'>Edit</button>"
-            },
-            {
                 "targets": -1,
                 "data": null,
-                "defaultContent": "<button class='btn btn-default deleteBtn'>Delete</button>"
+                "defaultContent": "<i class='fa fa-edit editBtn'></i> | <i class='fa fa-trash deleteBtn'></i>"
             }
             ]
     });
