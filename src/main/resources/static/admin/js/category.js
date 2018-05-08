@@ -52,7 +52,7 @@ $(document).ready(function () {
         $("#deleteCategoryModal").modal();      //open comfirmation
 
         $('#deleteCategoryBtn').click(function () {           //button function
-            $.post('/api/category/delete/' + data.id, {
+            $.get('/api/category/delete/' + data.id, {
 
             }, function() {
                 $('#categoryTable').DataTable().clear().draw();
