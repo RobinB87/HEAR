@@ -57,8 +57,8 @@
 
                 <form data-toggle="validator" role="form" id="newSubCategoryForm" onsubmit="return false;" method="post">
                     <div class="form-group">
-                        <label for="inputName" class="control-label">Name of Subcategory</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
+                        <label for="subCategoryTitleField" class="control-label">Name of Subcategory</label>
+                        <input type="text" class="form-control" id="subCategoryTitleField" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
                     </div>
 
                     <div class="form-group">
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="subCategorySubmitBtn" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        <button id="subCategorySubmitBtn" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                         <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
 

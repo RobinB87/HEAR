@@ -70,7 +70,7 @@ public class SubCategoryController {
             subCategoryList.add(dto);
         }
 
-        return subCategoryList;
+            return subCategoryList;
     }
 
     //edit subcategories

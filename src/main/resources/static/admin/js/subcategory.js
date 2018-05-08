@@ -37,7 +37,7 @@ $.ajax({
     }
 });
 
-$('#newSubcategoryModal').click(function() {
+$('#newSubcategoryModal').click(function () {
     for (var i = 0; i < categoryArray.length; i++) {
         $('#categoryListSelect2')
             .append($("<option></option>")
@@ -46,24 +46,25 @@ $('#newSubcategoryModal').click(function() {
     }
 });
 
-$('#closeButton').click(function() {
-   for(var i = 0; i < categoryArray.length; i++) {
-       $('#categoryListSelect2').empty();
-   }
+$('#closeButton').click(function () {
+    for (var i = 0; i < categoryArray.length; i++) {
+        $('#categoryListSelect2').empty();
+    }
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#categoryListSelect2').select2();
 
     $('#subCategorySubmitBtn').click(function (e) {
         e.preventDefault();
-        console.log("erin");
 
         var title = $('#subCategoryTitleField').val();
         var categoryId = $('#categoryListSelect2').val();
 
         $.post('/api/subcategory/add/' + categoryId, {
             title: title
+        }, function() {
+            $('#subCategoryTable').DataTable().clear().draw();
         });
 
         $('#subCategoryTitleField').empty();

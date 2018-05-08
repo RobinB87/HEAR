@@ -36,11 +36,14 @@ $(document).ready(function () {
             $.post('/api/category/edit', {
                 id: data.id,
                 title: title
+            }, function() {
+                $('#categoryTable').DataTable().clear().draw();
             });
         });
         table.draw();
     });
-    // DELETE BUTTON
+
+
     $('#categoryTable tbody').on('click', '.deleteBtn', function () {       //categoryTable is de tabel
         var data = table.row($(this).parents('tr')).data();                 //get data of this row
 
@@ -49,15 +52,15 @@ $(document).ready(function () {
         $("#deleteCategoryModal").modal();      //open comfirmation
 
         $('#deleteCategoryBtn').click(function () {           //button function
-            $.post('/api/category/delete/data.id', {
+            $.post('/api/category/delete/' + data.id, {
 
+            }, function() {
+                $('#categoryTable').DataTable().clear().draw();
             });
-            window.alert("deleted? "+ data.id);
         });
     });
 
 });
-
 
 
 $("#addCategoryBtn").click(function (e) {
@@ -67,6 +70,8 @@ $("#addCategoryBtn").click(function (e) {
 
     $.post('/api/category/add', {
         title: title
+    }, function() {
+        $('#categoryTable').DataTable().clear().draw();
     });
 });
 
