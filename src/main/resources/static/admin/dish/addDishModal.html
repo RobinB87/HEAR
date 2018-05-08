@@ -1,0 +1,30 @@
+<!--Nieuwe Dish Modal: Van toepassing voor het maken van een nieuwe Dish-->
+
+<div id="newDishModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Header van content -->
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h4 class="modal-name">Create Dish</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="newDishForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="dishTitleField" class="control-label">Name of dish</label>
+                        <input type="text" class="form-control" id="dishTitleField" placeholder="Enter a name" data-error="DAT IS GEEN NAAM BOYO!" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="addDishBtn" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        <button id="closeDishBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
