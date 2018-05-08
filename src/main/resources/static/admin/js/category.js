@@ -1,8 +1,6 @@
 // DataTable for categories
 $(document).ready(function () {
     var table = $("#categoryTable").DataTable({
-        "processing": true,
-        "serverSide": true,
         'ajax': {
             'url': '/api/category/all',
             'dataSrc': ''
@@ -11,17 +9,13 @@ $(document).ready(function () {
             {"data": "id"},
             {"data": "title"},
             {
-                "targets": -2,
-                "data": null,
-                "defaultContent": "<button class='btn btn-default editBtn'>Edit</button>"
-            },
-            {
                 "targets": -1,
                 "data": null,
-                "defaultContent": "<button class='btn btn-default deleteBtn'>Delete</button>"
+                "defaultContent": "<i class='fa fa-edit editBtn'></i> | <i class='fa fa-trash deleteBtn'></i>"
             }
             ]
     });
+
     // Edit button
     $('#categoryTable tbody').on('click', '.editBtn', function () {
         var data = table.row($(this).parents('tr')).data();
@@ -37,13 +31,13 @@ $(document).ready(function () {
                 id: data.id,
                 title: title
             }, function() {
-                $('#categoryTable').DataTable().clear().draw();
+                table.clear().draw();
             });
         });
-        table.draw();
     });
 
 
+    // delete button
     $('#categoryTable tbody').on('click', '.deleteBtn', function () {       //categoryTable is de tabel
         var data = table.row($(this).parents('tr')).data();                 //get data of this row
 
@@ -55,24 +49,23 @@ $(document).ready(function () {
             $.get('/api/category/delete/' + data.id, {
 
             }, function() {
-                $('#categoryTable').DataTable().clear().draw();
+                table.clear().draw();
             });
         });
     });
 
-});
+    $("#addCategoryBtn").click(function (e) {
+        e.preventDefault();
 
+        var title = $('#categoryTitleField').val();
 
-$("#addCategoryBtn").click(function (e) {
-    e.preventDefault();
-
-    var title = $('#categoryTitleField').val();
-
-    $.post('/api/category/add', {
-        title: title
-    }, function() {
-        $('#categoryTable').DataTable().clear().draw();
+        $.post('/api/category/add', {
+            title: title
+        }, function() {
+            table.clear().draw();
+        });
     });
+
 });
 
 
@@ -84,9 +77,15 @@ $("#newCategoryModal").click(function(e) {
         })
     });
 
+<<<<<<< HEAD
 // $('#viewIngredient').click(function(e) {
 //     e.preventDefault();
 //     $.get('ingredients/index.html', function(data) {
 //         $('#content-box-hear').html(data);
 //     });
 // });
+=======
+
+
+
+>>>>>>> e2e5c37121206ad8a4d6a2fe214eef89bccb911b
