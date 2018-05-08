@@ -1,7 +1,44 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Drinks</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Drinks</li>
-    </ol>
-</nav>
+<!--Volle Container voor de hele pagina!-->
+<div class="jumbotron-fluid bg-light">
+    <!--breadcrumb-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Drinks</li>
+        </ol>
+    </nav>
+
+    <!--Titel-->
+    <div class="row">
+        <div class="container text-center">
+            <h1>Drinks</h1>
+            <!--<p class="lead"> Drinks </p>-->
+        </div>
+    </div>
+
+    <!--Row met de button-->
+    <div class=“row”>
+        <div class=“col-md-12”>
+            <div class="card-body text-center">
+
+                <!--Button target zorgt ervoor dat het de modal van new Drink laat zien (Dus ga naar de Modal later in de pagina-->
+                <button class="btn-secondary" type="button" data-toggle="modal" data-target="#newDrinkModal">New
+                    Drink
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class=“row”>
+        <div class=“col-md-12”>
+            <h2></h2>
+            <table id="drinkTable" class="display table-hover" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
