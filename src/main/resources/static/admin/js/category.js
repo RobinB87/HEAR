@@ -23,7 +23,7 @@ $(document).ready(function () {
         $('#categoryIdField').val(data.id);
         $('#editCategoryTitleField').val(data.title);
 
-        viewEditModal();
+        // gebruik modal() om modal te openen
 
         $('#editCategoryBtn').click(function () {
             var title = $('#editCategoryTitleField').val();
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
         // get the values of this Id category:
         $('#categoryIdField').val(data.id);         //get id
-        viewDeleteModal();
+        // gebruik modal() om modal te openen
 
         $('#deleteCategoryBtn').click(function () {           //button function
             $.get('/api/category/delete/' + data.id, {
@@ -58,36 +58,15 @@ $(document).ready(function () {
         e.preventDefault();
 
         var title = $('#categoryTitleField').val();
+        console.log("plek 1");
 
         $.post('/api/category/add', {
             title: title
         }, function() {
             table.clear().draw();
         });
+
+        console.log("plek 2");
     });
 
 });
-
-$("#viewNewCategoryModal").click(function(e) {
-    e.preventDefault();
-
-        $('#formModal').modal();
-        $.get('category/createModal.html', function(data) {
-            $('#modalContent').html(data);
-        });
-
-    });
-
-function viewEditModal() {
-    $('#formModal').modal();
-    $.get('category/editModal.html', function(data) {
-        $('#modalContent').html(data);
-    });
-}
-
-function viewDeleteModal() {
-    $('#formModal').modal();
-    $.get('category/deleteModal.html', function(data) {
-        $('#modalContent').html(data);
-    });
-}
