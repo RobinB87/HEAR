@@ -22,7 +22,7 @@
             <div class="card-body text-center">
 
                 <!--Button target zorgt ervoor dat het de modal van new Category laat zien (Dus ga naar de Modal later in de pagina-->
-                <button class="btn-secondary" type="button" data-toggle="modal" data-target="#newDishModal">New Dish</button>
+                <button class="btn-secondary" type="button" data-toggle="modal" data-target="#createDishModal" id="newDishModal">New Dish</button>
             </div>
         </div>
     </div>
@@ -30,21 +30,22 @@
     <div class=“row”>
         <div class=“col-md-12”>
             <h2></h2>
-            <table id="DishTable" class="display" cellspacing="0" width="100%">
+            <table id="dishTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th>Ingredients</th>
-                    <!-- Hier ook die Select 2 toevoegen -->
+                    <th>Price</th>
+                    <th>Subcategory</th>
+                    <th></th>
                 </tr>
                 </thead>
             </table>
         </div>
     </div>
 
-    <!-- New Category Modal POP UP AlS JE OP CREATE DRUKT-->
-    <div id="newDishModal" class="modal fade" role="dialog">
+    <!-- Create dish modal -->
+    <div id="createDishModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Content-->
@@ -63,6 +64,19 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="dishPriceField" class="control-label">Price of dish</label>
+                            <input type="number" class="form-control" id="dishPriceField" placeholder="Enter a price" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subCategoryListSelect2">Subcategory</label>
+                            <select id="subCategoryListSelect2" name="subcategory.id" class="form-control subCategoryListSelect2"
+                                    style="width: 250px;">
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <button id="addDishBtn" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                             <button id="closeDishBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
@@ -72,7 +86,8 @@
 
         </div>
     </div>
-    <!-- End of new Category Modal -->
+    <!-- End of Create Category Modal -->
 </div>
 
+<script src="../admin/js/select2.min.js"></script>
 <script src="../admin/js/dish.js"></script>

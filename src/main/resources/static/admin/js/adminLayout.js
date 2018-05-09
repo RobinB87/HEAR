@@ -43,9 +43,9 @@ e.preventDefault();
    });
 });
 
-$('#viewMenuItem').click(function(e) {
+$('#viewDishes').click(function(e) {
 e.preventDefault();
-   $.get('menuitem/index.html', function(data) {
+   $.get('dish/index.html', function(data) {
        $('#content-box-hear').html(data);
    });
 });
