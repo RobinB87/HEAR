@@ -76,16 +76,3 @@ $("#newCategoryModal").click(function(e) {
             $('#categoryModalContent').html(data);
         })
     });
-
-<<<<<<< HEAD
-// $('#viewIngredient').click(function(e) {
-//     e.preventDefault();
-//     $.get('ingredients/index.html', function(data) {
-//         $('#content-box-hear').html(data);
-//     });
-// });
-=======
-
-
-
->>>>>>> e2e5c37121206ad8a4d6a2fe214eef89bccb911b
