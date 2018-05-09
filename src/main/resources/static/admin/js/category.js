@@ -70,7 +70,7 @@ $(document).ready(function () {
 
 
 
-$("#newCategoryModal").click(function(e) {
+$("#viewNewCategoryModal").click(function(e) {
     e.preventDefault();
         $.get('category/createModal.html', function(data) {
             $('#categoryModalContent').html(data);
