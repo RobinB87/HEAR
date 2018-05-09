@@ -50,6 +50,13 @@ e.preventDefault();
    });
 });
 
+$('#viewDrinks').click(function(e) {
+e.preventDefault();
+   $.get('drink/index.html', function(data) {
+       $('#content-box-hear').html(data);
+   });
+});
+
 $('#createIngredient').click(function(e) {
 e.preventDefault();
    $.get('ingredients/create.html', function(data) {
