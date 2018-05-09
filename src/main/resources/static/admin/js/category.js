@@ -16,45 +16,8 @@ $(document).ready(function () {
             ]
     });
 
-    // Edit button
-    $('#categoryTable tbody').on('click', '.editBtn', function () {
-        var data = table.row($(this).parents('tr')).data();
-
-        $('#categoryIdField').val(data.id);
-        $('#editCategoryTitleField').val(data.title);
-
-        viewEditModal();
-
-        $('#editCategoryBtn').click(function () {
-            var title = $('#editCategoryTitleField').val();
-            $.post('/api/category/edit', {
-                id: data.id,
-                title: title
-            }, function() {
-                table.clear().draw();
-            });
-        });
-    });
-
-
-    // delete button
-    $('#categoryTable tbody').on('click', '.deleteBtn', function () {       //categoryTable is de tabel
-        var data = table.row($(this).parents('tr')).data();                 //get data of this row
-
-        // get the values of this Id category:
-        $('#categoryIdField').val(data.id);         //get id
-        viewDeleteModal();
-
-        $('#deleteCategoryBtn').click(function () {           //button function
-            $.get('/api/category/delete/' + data.id, {
-
-            }, function() {
-                table.clear().draw();
-            });
-        });
-    });
-
-    $("#addCategoryBtn").click(function (e) {
+	// Add button
+	$("#addCategorySubmitBtn").click(function (e) {
         e.preventDefault();
 
         var title = $('#categoryTitleField').val();
@@ -66,28 +29,42 @@ $(document).ready(function () {
         });
     });
 
+	// Edit button
+    $('#categoryTable tbody').on('click', '.editBtn', function () {
+    $('#editCategoryModal').modal();                                    // Kusjes Robin & Sietske
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#categoryIdField').val(data.id);
+        $('#editCategoryTitleField').val(data.title);
+
+        $('#editCategoryEditBtn').click(function () {
+            var title = $('#editCategoryTitleField').val();
+            $.post('/api/category/edit', {
+                id: data.id,
+                title: title
+            }, function() {
+                table.clear().draw();
+            });
+        });
+    });
+
+	// Delete button
+    $('#categoryTable tbody').on('click', '.deleteBtn', function () {       //categoryTable is de tabel
+    $('#deleteCategoryModal').modal();
+        var data = table.row($(this).parents('tr')).data();                 //get data of this row
+
+        // get the values of this Id category:
+        $('#categoryIdField').val(data.id);         //get id
+		$('#deleteCategoryTitleField').val(data.title);
+
+        $('#deleteCategoryConfirmBtn').click(function () {           //button function
+            $.get('/api/category/delete/' + data.id, {
+
+            }, function() {
+                table.clear().draw();
+            });
+        });
 });
 
-$("#viewNewCategoryModal").click(function(e) {
-    e.preventDefault();
+});
 
-        $('#formModal').modal();
-        $.get('category/createModal.html', function(data) {
-            $('#modalContent').html(data);
-        });
-
-    });
-
-function viewEditModal() {
-    $('#formModal').modal();
-    $.get('category/editModal.html', function(data) {
-        $('#modalContent').html(data);
-    });
-}
-
-function viewDeleteModal() {
-    $('#formModal').modal();
-    $.get('category/deleteModal.html', function(data) {
-        $('#modalContent').html(data);
-    });
-}
