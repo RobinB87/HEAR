@@ -37,7 +37,13 @@ $(document).ready(function () {
         $('#categoryIdField').val(data.id);
         $('#editCategoryTitleField').val(data.title);
 
+<<<<<<< HEAD
         $('#editCategoryEditBtn').click(function () {
+=======
+        // gebruik modal() om modal te openen
+
+        $('#editCategoryBtn').click(function () {
+>>>>>>> 683d28ca507f6db2bdc6888b70cb935a0174d28e
             var title = $('#editCategoryTitleField').val();
             $.post('/api/category/edit', {
                 id: data.id,
@@ -55,7 +61,11 @@ $(document).ready(function () {
 
         // get the values of this Id category:
         $('#categoryIdField').val(data.id);         //get id
+<<<<<<< HEAD
 		$('#deleteCategoryTitleField').val(data.title);
+=======
+        // gebruik modal() om modal te openen
+>>>>>>> 683d28ca507f6db2bdc6888b70cb935a0174d28e
 
         $('#deleteCategoryConfirmBtn').click(function () {           //button function
             $.get('/api/category/delete/' + data.id, {
@@ -64,7 +74,28 @@ $(document).ready(function () {
                 table.clear().draw();
             });
         });
+<<<<<<< HEAD
 });
 
 });
 
+=======
+    });
+
+    $("#addCategoryBtn").click(function (e) {
+        e.preventDefault();
+
+        var title = $('#categoryTitleField').val();
+        console.log("plek 1");
+
+        $.post('/api/category/add', {
+            title: title
+        }, function() {
+            table.clear().draw();
+        });
+
+        console.log("plek 2");
+    });
+
+});
+>>>>>>> 683d28ca507f6db2bdc6888b70cb935a0174d28e
