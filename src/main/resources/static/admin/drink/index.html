@@ -45,4 +45,114 @@
     </div>
 </div>
 
+
+<!-- modal to add drinks -->
+<div id="addDrinkModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Content-->
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h4 class="modal-name">Create drink</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="addDrinkForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="addDrinkTitleField" class="control-label">Name of drink</label>
+                        <label for="addDrinkCostPriceField" class="control-label">Cost price of drink</label>
+                        <label for="addDrinkSellingPriceField" class="control-label">Selling price of drink</label>
+                        <input type="text" class="form-control" id="addDrinkTitleField" placeholder="Enter a name"
+                               data-error="DAT IS GEEN NAAM BOYO!" required>
+                        <input type="number" class="form-control" id="addDrinkCostPriceField" placeholder="Enter a cost price"
+                               data-error="DAT IS GEEN PRICE BOYO!" required>
+                        <input type="number" class="form-control" id="addDrinkSellingPriceField" placeholder="Enter a selling price"
+                               data-error="DAT IS GEEN PRICE BOYO!" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="addDrinkBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                            Submit
+                        </button>
+                        <button id="closeAddDrinkBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal to edit drinks -->
+<div id="editDrinkModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Content-->
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h4 class="modal-name">Edit drink</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="editDrinkForm" onsubmit="return false;" method="post">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="editDrinkIdField">
+                        <label for="editDrinkTitleField" class="control-label">Name of drink</label>
+                        <label for="editDrinkPriceField" class="control-label">Price of drink</label>
+                        <input type="text" class="form-control" id="editDrinkTitleField" placeholder="Enter a name"
+                               data-error="DAT IS GEEN NAAM BOYO!" required>
+                        <input type="number" class="form-control" id="editDrinkPriceField" placeholder="Enter a price"
+                               data-error="DAT IS GEEN PRICE BOYO!" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="editDrinkBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                            Edit
+                        </button>
+                        <button id="editDrinkCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
+                        </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal to delete drinks -->
+<div id="deleteDrinkModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Content-->
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h4 class="modal-name">Create drink</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="deleteDrinkForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <input type="hidden" class="form control" id="deleteDrinkIdField">
+                    </div>
+
+                    <div class="form-group">
+                        <button id="deleteDrinkBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                            Submit
+                        </button>
+                        <button id="closeDeleteDrinkBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../admin/js/select2.min.js"></script>
 <script src="../admin/js/drink.js"></script>
