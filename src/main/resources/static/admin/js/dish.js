@@ -30,7 +30,18 @@ $(document).ready(function () {
         }
     });
 
-    console.log(subCategoryArray);
+    var ingredientsArray = [];
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/ingredient/all',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (i, itemData) {
+                ingredientsArray[i] = itemData;
+            });
+        }
+    });
 
     $('#newDishModal').click(function () {
         for (var i = 0; i < subCategoryArray.length; i++) {
@@ -47,13 +58,48 @@ $(document).ready(function () {
         }
     });
 
+    var index = 0;
+
+    $('#addIngredientBtn').click(function (e) {
+        e.preventDefault();
+
+        var html = '<div class="form-group">' +
+            '<select class="select2 form-control" id="ingredients' + index + '">';
+
+        for(var i = 0; i < ingredientsArray.length; i++) {
+            html = html + '<option value="' + ingredientsArray[i].id + '" name="ingredient[]">' + ingredientsArray[i].getTitle() + '</option>';
+        }
+
+        html = html + '</select>' +
+            '</div>';
+
+        console.table(ingredientsArray);
+        console.log(html);
+
+        $('#ingredientContainer').append(html);
+        $('#ingredients' + index).select2();
+
+        index++;
+
+    });
+
     $("#addDishBtn").click(function (e) {
         e.preventDefault();
+
+        var ingredients = [];
+        $('input[name="ingredient[]"]').each(function() {
+           var ingredient = { id: $(this).val() };
+           ingredients.add(ingredient);
+        });
+
+        console.log(ingredients);
+
 
         $.post('/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(), {
             dish: {
                 title: $('#dishTitleField').val(),
-                costPrice: $('#dishPriceField').val()
+                costPrice: $('#dishPriceField').val(),
+                ingredients: ingredients
             }
 
         }, function () {
