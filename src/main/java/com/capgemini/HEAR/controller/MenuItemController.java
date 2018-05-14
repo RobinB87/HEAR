@@ -1,11 +1,17 @@
 package com.capgemini.HEAR.controller;
 
+import com.capgemini.HEAR.model.DTO.DishDTO;
 import com.capgemini.HEAR.model.Entities.Dish;
 import com.capgemini.HEAR.model.Entities.Drink;
+import com.capgemini.HEAR.model.Entities.SubCategory;
 import com.capgemini.HEAR.repository.IDishRepository;
 import com.capgemini.HEAR.repository.IDrinkRepository;
+import com.capgemini.HEAR.repository.ISubCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/menuitem")
@@ -17,6 +23,9 @@ public class MenuItemController {
     @Autowired
     private IDrinkRepository drinkRepository;
 
+    @Autowired
+    private ISubCategoryRepository subCategoryRepository;
+
 
     /**
      * Dishes: same methods as in category and subcategory
@@ -24,9 +33,15 @@ public class MenuItemController {
      * @return
      */
 
-    @PostMapping("/dish/add")
-    public Dish addDish(Dish dish) {
-        return dishRepository.save(dish);
+    @PostMapping("/dish/add/{subcategoryId}")
+    public Dish addDish(@PathVariable int subcategoryId, Dish dish) {
+
+        SubCategory subCategory = subCategoryRepository.findById(subcategoryId).isPresent() ? subCategoryRepository.findById(subcategoryId).get() : null;
+        dish.setSubCategory(subCategory);
+        subCategory.addDish(dish);
+        subCategoryRepository.save(subCategory);
+
+        return dish;
     }
 
     @GetMapping("/dish/all")
@@ -34,9 +49,26 @@ public class MenuItemController {
         return dishRepository.findAll();
     }
 
+    @GetMapping("/dish/formatted/all")
+    public List<DishDTO> getDishesDTO() {
+        List<DishDTO> dishDTOList = new ArrayList<>();
+
+        for(Dish dish : dishRepository.findAll()) {
+            DishDTO dto = new DishDTO(dish);
+            dishDTOList.add(dto);
+        }
+
+        return dishDTOList;
+    }
+
     @GetMapping("/dish/get/{id}")
     public Dish getDish(@PathVariable int id){
         return dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null;
+    }
+
+    @GetMapping("/dish/formatted/get/{id}")
+    public DishDTO getDishDto(@PathVariable int id) {
+        return new DishDTO(dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null);
     }
 
     @PostMapping("/dish/edit")

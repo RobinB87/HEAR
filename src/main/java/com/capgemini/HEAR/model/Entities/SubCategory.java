@@ -48,4 +48,8 @@ public class SubCategory extends Base {
     public void setDrinks(List<Drink> drinks) {
         this.drinks = drinks;
     }
+
+    public void addDish(Dish dish) {
+        this.dishes.add(dish);
+    }
 }
