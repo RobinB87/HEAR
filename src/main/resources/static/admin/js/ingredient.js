@@ -27,7 +27,8 @@ $("#addIngredientSubmitBtn").click(function (e) {
         title: title,
         costPrice: costPrice
     },  function() {
-             table.clear().draw();
+             //table.clear().draw();
+             table.ajax.reload();
                 })
     });
         // Edit ingredient functie
@@ -48,7 +49,8 @@ $('#ingredientTable tbody').on('click', '.editBtn', function () {
                 costPrice: costPrice,
                 title: title
             }, function() {
-                table.clear().draw();
+                //table.clear().draw();
+                table.ajax.reload();
             });
 
         });
@@ -65,7 +67,8 @@ $('#ingredientTable tbody').on('click', '.editBtn', function () {
                 $.get('/api/ingredient/delete/' + data.id, {
 
                 }, function() {
-                    table.clear().draw();
+                    //table.clear().draw();
+                    table.ajax.reload();
             });
       });
     });
