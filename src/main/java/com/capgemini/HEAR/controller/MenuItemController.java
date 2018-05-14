@@ -1,6 +1,7 @@
 package com.capgemini.HEAR.controller;
 
 import com.capgemini.HEAR.model.DTO.DishDTO;
+import com.capgemini.HEAR.model.DTO.DrinkDTO;
 import com.capgemini.HEAR.model.Entities.Dish;
 import com.capgemini.HEAR.model.Entities.Drink;
 import com.capgemini.HEAR.model.Entities.SubCategory;
@@ -71,6 +72,8 @@ public class MenuItemController {
         return new DishDTO(dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null);
     }
 
+
+
     @PostMapping("/dish/edit")
     public Dish editDish(Dish dish){
         return dishRepository.save(dish);
@@ -90,15 +93,25 @@ public class MenuItemController {
      * @param drink
      * @return
      */
+    @PostMapping("/drink/add/{subcategoryId}")
+    public Drink addDrink(@PathVariable int subcategoryId, Drink drink) {
 
-    @PostMapping("/drink/add")
-    public Drink addDrink(Drink drink) {
-        return drinkRepository.save(drink);
+        SubCategory subCategory = subCategoryRepository.findById(subcategoryId).isPresent() ? subCategoryRepository.findById(subcategoryId).get() : null;
+        drink.setSubcategory(subCategory);
+        subCategory.addDrink(drink);
+        subCategoryRepository.save(subCategory);
+
+        return drink;
     }
 
     @GetMapping("/drink/all")
     public Iterable<Drink> getDrinks() {
         return drinkRepository.findAll();
+    }
+
+    @GetMapping("/drink/formatted/get{id}")
+    public DrinkDTO getDrinkDto(@PathVariable int id){
+        return new DrinkDTO(drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null);
     }
 
     @GetMapping("/drink/get/{id}")
