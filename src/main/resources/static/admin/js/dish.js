@@ -96,11 +96,9 @@ $(document).ready(function () {
 
 
         $.post('/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(), {
-            dish: {
                 title: $('#dishTitleField').val(),
                 costPrice: $('#dishPriceField').val(),
                 ingredients: ingredients
-            }
 
         }, function () {
             table.clear().draw();
