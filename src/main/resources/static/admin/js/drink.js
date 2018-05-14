@@ -30,11 +30,9 @@ $(document).ready(function () {
             var sellingPrice = $('#addDrinkSellingPriceField').val();
 
             $.post('/api/menuitem/drink/add/' + $('#subCategoryListSelect2').val(), {
-                drink: {
                 title: title,
                 costPrice: costPrice,
                 sellingPrice: sellingPrice
-                }
             }, function () {
                 table.clear().draw();
             });
