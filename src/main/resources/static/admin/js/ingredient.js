@@ -7,7 +7,7 @@ $(document).ready(function () {
             "columns": [
                 {"data": "id"},
                 {"data": "title"},
-                {"data": "price"},
+                {"data": "costPrice"},
 
                 {
                     "targets": -1,
@@ -16,20 +16,57 @@ $(document).ready(function () {
                 }
                 ]
         });
-});
-
-
-
+        // Add ingredient functie
 $("#addIngredientSubmitBtn").click(function (e) {
     e.preventDefault();
 
     var title = $('#ingredientTitleField').val();
-    var price = $('#ingredientPriceField').val();
+    var costPrice = $('#ingredientPriceField').val();
 
     $.post('/api/ingredient/add', {
         title: title,
-        price: price
+        costPrice: costPrice
     },  function() {
              table.clear().draw();
                 })
+    });
+        // Edit ingredient functie
+$('#ingredientTable tbody').on('click', '.editBtn', function () {
+    $('#editIngredientModal').modal();
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#ingredientIdField').val(data.id);
+        $('#editIngredientTitleField').val(data.title);
+		$('#editIngredientPriceField').val(data.costPrice);
+
+        $('#editIngredientEditBtn').click(function () {
+
+            var title = $('#editIngredientTitleField').val();
+            var costPrice = $('#editIngredientPriceField').val();
+            $.post('/api/ingredient/edit', {
+                id: data.id,
+                costPrice: costPrice,
+                title: title
+            }, function() {
+                table.clear().draw();
+            });
+
+        });
+    });
+        // Delete Ingredient
+     $('#ingredientTable tbody').on('click', '.deleteBtn', function () {
+        $('#deleteIngredientModal').modal();
+            var data = table.row($(this).parents('tr')).data();
+
+            $('#ingredientIdField').val(data.id);
+    		$('#deleteIngredientForm').val(data.title);
+
+            $('#deleteIngredientConfirmBtn').click(function () {
+                $.get('/api/ingredient/delete/' + data.id, {
+
+                }, function() {
+                    table.clear().draw();
+            });
+      });
+    });
 });
