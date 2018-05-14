@@ -80,8 +80,6 @@ $(document).ready(function () {
 
     });
 
-
-
     var dish = {title: "" , costPrice: "", ingredients: []};
 
     $("#addDishBtn").click(function (e) {
@@ -95,8 +93,6 @@ $(document).ready(function () {
            dish.ingredients.push(ingredient);
         });
 
-        // console.log(ingredients);
-
         $.ajax({
            'contentType': 'application/json',
            'type': 'POST',
@@ -108,13 +104,6 @@ $(document).ready(function () {
            }
         });
 
-        // $.post('/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(),
-        //
-        //         JSON.stringify(dish)
-        //
-        // , function () {
-        //     table.clear().draw();
-        // });
     });
 
     $('#subCategoryListSelect2').select2();
