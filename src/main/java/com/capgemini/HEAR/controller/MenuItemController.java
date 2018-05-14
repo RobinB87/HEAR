@@ -72,8 +72,6 @@ public class MenuItemController {
         return new DishDTO(dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null);
     }
 
-
-
     @PostMapping("/dish/edit")
     public Dish editDish(Dish dish){
         return dishRepository.save(dish);

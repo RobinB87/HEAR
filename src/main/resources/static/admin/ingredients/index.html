@@ -66,10 +66,7 @@
                                 <label for="ingredientPriceField" class="control-label">Price of Ingredient</label>
                                 <input type="text" class="form-control" id="ingredientPriceField" placeholder="Enter a price"
                                        data-error="DAT IS GEEN NAAM BOYO!" required>
-
-
                             </div>
-
                             <div class="form-group">
                                 <button id="addIngredientSubmitBtn" type="button" class="btn btn-primary" data-dismiss="modal">
                                     Submit
@@ -103,7 +100,10 @@
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="ingredientIdField">
                                 <label for="editIngredientTitleField" class="control-label">Name of Ingredient</label>
-                                <input type="text" class="form-control" id="editIngredientTitleField" placeholder="Enter a name"
+                                <input type="text" class="form-control" id="editIngredientTitleField" placeholder="Edit name"
+                                       data-error="DAT IS GEEN NAAM BOYO!" required>
+                                <label for="editIngredientPriceField" class="control-label">Price of Ingredient</label>
+                                <input type="text" class="form-control" id="editIngredientPriceField" placeholder="Edit price"
                                        data-error="DAT IS GEEN NAAM BOYO!" required>
                             </div>
 
@@ -113,10 +113,10 @@
                                 </button>
                                 <button id="closeIngredientEditBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
                                 </button>
+                            </div>
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -146,7 +146,7 @@
                             </button>
                             <button id="closeDeleteIngredientConfirmBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel
                             </button>
-
+                        </div>
                     </form>
                 </div>
             </div>
