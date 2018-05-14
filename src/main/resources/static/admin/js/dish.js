@@ -64,17 +64,14 @@ $(document).ready(function () {
         e.preventDefault();
 
         var html = '<div class="form-group">' +
-            '<select class="select2 form-control" id="ingredients' + index + '">';
+            '<select class="select2 form-control ingSelect" id="ingredients' + index + '">';
 
         for(var i = 0; i < ingredientsArray.length; i++) {
-            html = html + '<option value="' + ingredientsArray[i].id + '" name="ingredient[]">' + ingredientsArray[i].getTitle() + '</option>';
+            html = html + '<option value="' + ingredientsArray[i].id + '" name="ingredient[]">' + ingredientsArray[i].title + '</option>';
         }
 
         html = html + '</select>' +
             '</div>';
-
-        console.table(ingredientsArray);
-        console.log(html);
 
         $('#ingredientContainer').append(html);
         $('#ingredients' + index).select2();
@@ -83,26 +80,41 @@ $(document).ready(function () {
 
     });
 
+
+
+    var dish = {title: "" , costPrice: "", ingredients: []};
+
     $("#addDishBtn").click(function (e) {
         e.preventDefault();
 
-        var ingredients = [];
-        $('input[name="ingredient[]"]').each(function() {
-           var ingredient = { id: $(this).val() };
-           ingredients.add(ingredient);
+        dish.title = $('#dishTitleField').val();
+        dish.price = $('#dishPriceField').val();
+
+        $('.ingSelect').each(function(index, value) {
+           var ingredient = {  "id": $(this).val() };
+           dish.ingredients.push(ingredient);
         });
 
-        console.log(ingredients);
+        // console.log(ingredients);
 
-
-        $.post('/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(), {
-                title: $('#dishTitleField').val(),
-                costPrice: $('#dishPriceField').val(),
-                ingredients: ingredients
-
-        }, function () {
-            table.clear().draw();
+        $.ajax({
+           'contentType': 'application/json',
+           'type': 'POST',
+            'url': '/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(),
+           'data': JSON.stringify(dish),
+           success: function() {
+               alert('gelukt');
+               table.clear().draw();
+           }
         });
+
+        // $.post('/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(),
+        //
+        //         JSON.stringify(dish)
+        //
+        // , function () {
+        //     table.clear().draw();
+        // });
     });
 
     $('#subCategoryListSelect2').select2();

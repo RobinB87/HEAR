@@ -4,9 +4,11 @@ import com.capgemini.HEAR.model.DTO.DishDTO;
 import com.capgemini.HEAR.model.DTO.DrinkDTO;
 import com.capgemini.HEAR.model.Entities.Dish;
 import com.capgemini.HEAR.model.Entities.Drink;
+import com.capgemini.HEAR.model.Entities.Ingredient;
 import com.capgemini.HEAR.model.Entities.SubCategory;
 import com.capgemini.HEAR.repository.IDishRepository;
 import com.capgemini.HEAR.repository.IDrinkRepository;
+import com.capgemini.HEAR.repository.IIngredientRepository;
 import com.capgemini.HEAR.repository.ISubCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,9 @@ public class MenuItemController {
     @Autowired
     private ISubCategoryRepository subCategoryRepository;
 
+    @Autowired
+    private IIngredientRepository ingredientRepository;
+
 
     /**
      * Dishes: same methods as in category and subcategory
@@ -35,8 +40,18 @@ public class MenuItemController {
      */
 
     @PostMapping("/dish/add/{subcategoryId}")
-    public Dish addDish(@PathVariable int subcategoryId, Dish dish) {
+    public Dish addDish(@PathVariable int subcategoryId, @RequestBody DishDTO dto) {
 
+        List<Ingredient> ingredientList = new ArrayList<>();
+
+        for (Ingredient ingredientDto : dto.getIngredients()) {
+            Ingredient ingr = ingredientRepository.findById(ingredientDto.getId()).isPresent()
+                    ? ingredientRepository.findById(ingredientDto.getId()).get() : null;
+            ingredientList.add(ingr);
+        }
+
+        dto.setIngredients(ingredientList);
+        Dish dish = new Dish(dto);
         SubCategory subCategory = subCategoryRepository.findById(subcategoryId).isPresent() ? subCategoryRepository.findById(subcategoryId).get() : null;
         dish.setSubCategory(subCategory);
         subCategory.addDish(dish);

@@ -1,5 +1,6 @@
 package com.capgemini.HEAR.model.Entities;
 
+import com.capgemini.HEAR.model.DTO.DishDTO;
 import com.capgemini.HEAR.model.MenuItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -26,6 +27,12 @@ public class Dish extends MenuItem {
     private SubCategory subcategory;
 
     public Dish() {
+    }
+
+    public Dish(DishDTO dto) {
+        this.id = dto.getId();
+        this.title = dto.getTitle();
+        this.ingredients = dto.getIngredients();
     }
 
     public SubCategory getSubCategory() {
