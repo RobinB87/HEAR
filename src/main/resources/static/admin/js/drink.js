@@ -1,23 +1,49 @@
 $(document).ready(function () {
 
-$('#addDrinkBtn').click(function (e) {
-        e.preventDefault();
+    var subCategoryArray = [];
 
-        var title = $('#addDrinkTitleField').val();
-        var costPrice = $('#addDrinkCostPriceField').val();
-        var sellingPrice = $('#addDrinkSellingPriceField').val();
+    $.ajax({
+        type: 'GET',
+        url: '/api/subcategory/all',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (i, itemData) {
+                subCategoryArray[i] = itemData;
+            });
+        }
+    });
 
-        $.post('/api/menuitem/drink/add', {
-            title: title,
-            costPrice: costPrice,
-            sellingPrice: sellingPrice
-        }, function () {
-            table.clear().draw();
-        });
+    $('#addDrinkModal').click(function () {
+        for (var i = 0; i < subCategoryArray.length; i++) {
+            $('#subCategoryListSelect2')
+                .append($("<option></option>")
+                    .attr("value", subCategoryArray[i].id)
+                    .text(subCategoryArray[i].title));
+        }
+    });
 
-        $('#addDrinkTitleField').empty();
-        $('#addDrinkCostPriceField').empty();
-        $('#addDrinkSellingPriceField').empty();
-});
+    $('#addDrinkBtn').click(function (e) {
+            e.preventDefault();
+
+            var title = $('#addDrinkTitleField').val();
+            var costPrice = $('#addDrinkCostPriceField').val();
+            var sellingPrice = $('#addDrinkSellingPriceField').val();
+
+            $.post('/api/menuitem/drink/add/' + $('#subCategoryListSelect2').val(), {
+                drink: {
+                title: title,
+                costPrice: costPrice,
+                sellingPrice: sellingPrice
+                }
+            }, function () {
+                table.clear().draw();
+            });
+
+            $('#addDrinkTitleField').empty();
+            $('#addDrinkCostPriceField').empty();
+            $('#addDrinkSellingPriceField').empty();
+    });
+
+    $('#subCategoryListSelect2').select2();
 
 });

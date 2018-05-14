@@ -61,13 +61,22 @@
 
                 <form data-toggle="validator" role="form" id="addDrinkForm" onsubmit="return false;">
                     <div class="form-group">
+
+                        <div class="form-group">
+                            <label for="subCategoryListSelect2">Subcategory</label>
+                            <select id="subCategoryListSelect2" name="subcategory.id"
+                                    class="form-control subCategoryListSelect2"
+                                    style="width: 250px;">
+                            </select>
+                        </div>
+
                         <label for="addDrinkTitleField" class="control-label">Name of drink</label>
-                        <label for="addDrinkCostPriceField" class="control-label">Cost price of drink</label>
-                        <label for="addDrinkSellingPriceField" class="control-label">Selling price of drink</label>
                         <input type="text" class="form-control" id="addDrinkTitleField" placeholder="Enter a name"
                                data-error="DAT IS GEEN NAAM BOYO!" required>
+                        <label for="addDrinkCostPriceField" class="control-label">Cost price of drink</label>
                         <input type="number" class="form-control" id="addDrinkCostPriceField" placeholder="Enter a cost price"
                                data-error="DAT IS GEEN PRICE BOYO!" required>
+                        <label for="addDrinkSellingPriceField" class="control-label">Selling price of drink</label>
                         <input type="number" class="form-control" id="addDrinkSellingPriceField" placeholder="Enter a selling price"
                                data-error="DAT IS GEEN PRICE BOYO!" required>
                     </div>

@@ -52,4 +52,8 @@ public class SubCategory extends Base {
     public void addDish(Dish dish) {
         this.dishes.add(dish);
     }
+
+    public void addDrink(Drink drink) {
+        this.drinks.add(drink);
+    }
 }
