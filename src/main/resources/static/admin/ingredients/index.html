@@ -1,154 +1,158 @@
-<!--NIET VERWIJDEREN BITCHES STRAKS NOG NODIG >ALLE ID'S KLOPPEN<-->
+<!--NIET VERWIJDEREN BITCHES STRAKS NOG NODIG >ALLE ID'S KLOPPEN-->
 
-<!--<div class="jumbotron-fluid bg-light">-->
-    <!--&lt;!&ndash;breadcrumb&ndash;&gt;-->
-    <!--<nav aria-label="breadcrumb">-->
-        <!--<ol class="breadcrumb">-->
-            <!--<li class="breadcrumb-item"><a href="index.html">Home</a></li>-->
-            <!--<li class="breadcrumb-item active" aria-current="page">Ingredients</li>-->
-        <!--</ol>-->
-    <!--</nav>-->
+<div class="jumbotron-fluid bg-light">
+    <!--breadcrumb-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ingredients</li>
+        </ol>
+    </nav>
 
-    <!--&lt;!&ndash;Titel&ndash;&gt;-->
-    <!--<div class="row">-->
-        <!--<div class="container text-center">-->
-            <!--<h1 class="display-4">Ingredients</h1>-->
-            <!--&lt;!&ndash;<p class="lead"> Categories </p>&ndash;&gt;-->
-        <!--</div>-->
-    <!--</div>-->
+    <!--Titel-->
+    <div class="row">
+        <div class="container text-center">
+            <h1 class="display-4">Ingredients</h1>
+            <!--<p class="lead"> Categories </p>-->
+        </div>
+    </div>
 
-    <!--&lt;!&ndash;Row met de button&ndash;&gt;-->
-    <!--<div class=“row”>-->
-        <!--<div class=“col-md-12”>-->
-            <!--<div class="card-body text-center">-->
+    <!--Row met de button-->
+    <div class=“row”>
+        <div class=“col-md-12”>
+            <div class="card-body text-center">
 
-                <!--&lt;!&ndash;Button target zorgt ervoor dat het de modal van new Category laat zien (Dus ga naar de Modal later in de pagina&ndash;&gt;-->
-                <!--<button class="btn-secondary" type="button" data-toggle="modal" data-target="#newIngredientsModal">New-->
-                    <!--Ingredient-->
-                <!--</button>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+                <!--Button target zorgt ervoor dat het de modal van new Category laat zien (Dus ga naar de Modal later in de pagina-->
+                <button class="btn-secondary" type="button" data-toggle="modal" data-target="#newIngredientsModal">New
+                    Ingredient
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <!--<div class=“row”>-->
-        <!--<div class=“col-md-12”>-->
-            <!--<h2></h2>-->
-            <!--<table id="ingredientTable" class="display table-hover" cellspacing="0" width="100%">-->
-                <!--<thead>-->
-                <!--<tr>-->
-                    <!--<th>ID</th>-->
-                    <!--<th>Title</th>-->
-                    <!--<th>Edit</th>-->
-                    <!--<th>Delete</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
-            <!--</table>-->
-        <!--</div>-->
+    <div class=“row”>
+        <div class=“col-md-12”>
+            <h2></h2>
+            <table id="ingredientTable" class="display table-hover" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Edit</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
 
-        <!--&lt;!&ndash; New Ingredient Modal POP UP AlS JE OP CREATE DRUKT&ndash;&gt;-->
-        <!--<div id="newIngredientModal" class="modal fade" role="dialog">-->
-            <!--<div class="modal-dialog">-->
+        <!-- New Ingredient Modal POP UP AlS JE OP CREATE DRUKT-->
+        <div id="newIngredientsModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
-                <!--&lt;!&ndash; Content&ndash;&gt;-->
-                <!--<div class="modal-content">-->
-                    <!--<div class="modal-header text-left">-->
-                        <!--<h4 class="modal-name">Create Ingredient</h4>-->
-                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                    <!--</div>-->
+                <!-- Content-->
+                <div class="modal-content">
+                    <div class="modal-header text-left">
+                        <h4 class="modal-name">Create Ingredient</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
-                    <!--<div class="modal-body">-->
+                    <div class="modal-body">
 
-                        <!--<form data-toggle="validator" role="form" id="newIngredientForm" onsubmit="return false;">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="ingredientTitleField" class="control-label">Name of Ingredient</label>-->
-                                <!--<input type="text" class="form-control" id="ingredientTitleField" placeholder="Enter a name"-->
-                                       <!--data-error="DAT IS GEEN NAAM BOYO!" required>-->
-                            <!--</div>-->
-
-                            <!--<div class="form-group">-->
-                                <!--<button id="addIngredientBtn" type="button" class="btn btn-primary" data-dismiss="modal">-->
-                                    <!--Submit-->
-                                <!--</button>-->
-                                <!--<button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close-->
-                                <!--</button>-->
-                            <!--</div>-->
-                        <!--</form>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; End of new Ingredient Modal &ndash;&gt;-->
+                        <form data-toggle="validator" role="form" id="newIngredientForm" onsubmit="return false;">
+                            <div class="form-group">
+                                <label for="ingredientTitleField" class="control-label">Name of Ingredient</label>
+                                <input type="text" class="form-control" id="ingredientTitleField" placeholder="Enter a name"
+                                       data-error="DAT IS GEEN NAAM BOYO!" required>
+                                <label for="ingredientPriceField" class="control-label">Price of Ingredient</label>
+                                <input type="text" class="form-control" id="ingredientPriceField" placeholder="Enter a price"
+                                       data-error="DAT IS GEEN NAAM BOYO!" required>
 
 
-        <!--&lt;!&ndash; Edit Ingredient Modal &ndash;&gt;-->
-        <!--<div id="editIngredientModal" class="modal fade" role="dialog">-->
-            <!--<div class="modal-dialog">-->
+                            </div>
 
-                <!--&lt;!&ndash; Content&ndash;&gt;-->
-                <!--<div class="modal-content">-->
-                    <!--<div class="modal-header text-left">-->
-                        <!--<h4 class="modal-name">Edit Ingredient</h4>-->
-                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                    <!--</div>-->
+                            <div class="form-group">
+                                <button id="addIngredientSubmitBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                                    Submit
+                                </button>
+                                <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-                    <!--<div class="modal-body">-->
+            </div>
+        </div>
+        <!-- End of new Ingredient Modal -->
 
-                        <!--<form data-toggle="validator" role="form" id="editIngredientForm" onsubmit="return false;" method="post">-->
-                            <!--<div class="form-group">-->
-                                <!--<input type="hidden" class="form-control" id="ingredientIdField">-->
-                                <!--<label for="editIngredientTitleField" class="control-label">Name of Ingredient</label>-->
-                                <!--<input type="text" class="form-control" id="editIngredientTitleField" placeholder="Enter a name"-->
-                                       <!--data-error="DAT IS GEEN NAAM BOYO!" required>-->
-                            <!--</div>-->
 
-                            <!--<div class="form-group">-->
-                                <!--<button id="editIngredientEditBtn" type="button" class="btn btn-primary" data-dismiss="modal">-->
-                                    <!--Edit-->
-                                <!--</button>-->
-                                <!--<button id="closeIngredientEditBtn" type="button" class="btn btn-default" data-dismiss="modal">Close-->
-                                <!--</button>-->
-                        <!--</form>-->
-                    <!--</div>-->
-                <!--</div>-->
+        <!-- Edit Ingredient Modal -->
+        <div id="editIngredientModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; End of Edit Modal &ndash;&gt;-->
+                <!-- Content-->
+                <div class="modal-content">
+                    <div class="modal-header text-left">
+                        <h4 class="modal-name">Edit Ingredient</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
-    <!--&lt;!&ndash; Delete Ingredient Modal: COMFIRMATION!&ndash;&gt;-->
-    <!--<div id="deleteIngredientModal" class="modal fade" role="dialog">-->
-        <!--<div class="modal-dialog">-->
+                    <div class="modal-body">
 
-            <!--&lt;!&ndash; Content&ndash;&gt;-->
-            <!--<div class="modal-content">-->
-                <!--<div class="modal-header text-left">-->
-                    <!--<h4 class="modal-name">Are you sure you want to delete this ingredient?</h4>-->
-                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                <!--</div>-->
+                        <form data-toggle="validator" role="form" id="editIngredientForm" onsubmit="return false;" method="post">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" id="ingredientIdField">
+                                <label for="editIngredientTitleField" class="control-label">Name of Ingredient</label>
+                                <input type="text" class="form-control" id="editIngredientTitleField" placeholder="Enter a name"
+                                       data-error="DAT IS GEEN NAAM BOYO!" required>
+                            </div>
 
-                <!--<div class="modal-body">-->
+                            <div class="form-group">
+                                <button id="editIngredientEditBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                                    Edit
+                                </button>
+                                <button id="closeIngredientEditBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
+                                </button>
+                        </form>
+                    </div>
+                </div>
 
-                    <!--<form data-toggle="validator" role="form" id="deleteIngredientForm" onsubmit="return false;" method="post">-->
-                        <!--<div class="form-group">-->
-                            <!--<input type="hidden" class="form-control" id="ingredientIdForm">-->
-                        <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <!-- End of Edit Modal -->
 
-                        <!--<div class="form-group">-->
-                            <!--<button id="deleteIngredientConfirmBtn" type="button" class="btn btn-primary" data-dismiss="modal">-->
-                                <!--Confirm Delete-->
-                            <!--</button>-->
-                            <!--<button id="closeDeleteIngredientConfirmBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel-->
-                            <!--</button>-->
+    <!-- Delete Ingredient Modal: COMFIRMATION!-->
+    <div id="deleteIngredientModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-                    <!--</form>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; End of Delete Modal &ndash;&gt;-->
+            <!-- Content-->
+            <div class="modal-content">
+                <div class="modal-header text-left">
+                    <h4 class="modal-name">Are you sure you want to delete this ingredient?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-<!--</div>-->
+                <div class="modal-body">
 
-<!--<script src="../admin/js/ingredient.js"></script>-->
+                    <form data-toggle="validator" role="form" id="deleteIngredientForm" onsubmit="return false;" method="post">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="ingredientIdForm">
+                        </div>
+
+                        <div class="form-group">
+                            <button id="deleteIngredientConfirmBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                                Confirm Delete
+                            </button>
+                            <button id="closeDeleteIngredientConfirmBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                            </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Delete Modal -->
+
+</div>
+
+<script src="../admin/js/ingredient.js"></script>
