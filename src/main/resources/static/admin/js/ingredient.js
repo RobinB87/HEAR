@@ -7,7 +7,7 @@ $(document).ready(function () {
             "columns": [
                 {"data": "id"},
                 {"data": "title"},
-                {"data": "price"},
+                {"data": "selling_price"},
 
                 {
                     "targets": -1,
