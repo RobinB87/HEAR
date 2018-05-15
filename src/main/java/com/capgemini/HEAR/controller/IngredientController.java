@@ -3,7 +3,11 @@ package com.capgemini.HEAR.controller;
 import com.capgemini.HEAR.model.Entities.Ingredient;
 import com.capgemini.HEAR.repository.IIngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ingredient")
@@ -28,8 +32,15 @@ public class IngredientController  {
     }
 
     @GetMapping("/get/{id}")
-    public Ingredient getIngredient(@PathVariable int id){
-        return ingredientRepository.findById(id).isPresent() ? ingredientRepository.findById(id).get() : null;
+    public ResponseEntity<Ingredient> getIngredient(@PathVariable int id){
+        Optional<Ingredient> optionalIngredient = this.ingredientRepository.findById(id);
+        if(optionalIngredient.isPresent()) {
+            return ResponseEntity.ok(optionalIngredient.get());
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @PostMapping("/edit")

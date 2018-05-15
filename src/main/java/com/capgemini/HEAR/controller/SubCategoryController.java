@@ -78,9 +78,21 @@ public class SubCategoryController {
     }
 
     //edit one subcategory
-    @PostMapping("/edit")
-    public SubCategory editSubcategory(SubCategory subCategory){
-        return subCategoryRepository.save(subCategory);
+    @PostMapping("/edit/{categoryId}")
+    public SubCategory editSubcategory(@PathVariable int categoryId, SubCategory subCategory){
+
+        Category category = new Category();
+
+        if(subCategoryRepository.findById(categoryId).isPresent()){
+            category = categoryRepository.findById(categoryId).get();
+        } else {
+            category = null;
+        }
+
+            subCategory.setCategory(category);
+
+            return subCategoryRepository.save(subCategory);
+
     }
 
     //delete one subcategory by id
