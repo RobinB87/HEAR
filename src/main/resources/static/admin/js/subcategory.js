@@ -46,6 +46,30 @@ $(document).ready(function () {
 
     var index = 0;
 
+    // Edit button
+    $('#subcategoryTable tbody').on('click', '.editBtn', function () {
+    $('#editSubcategoryModal').modal();
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#editSubcategoryIdField').val(data.id);
+        $('#editSubcategoryTitleField').val(data.title);
+
+        console.table(data);
+
+        $('#editSubcategoryBtn').click(function () {
+
+            var title = $('#editDrinkTitleField').val();
+
+            $.post('/api/subcategory/edit/' + data.categoryId, {
+                id: data.id,
+                title: title
+            }, function() {
+                table.clear().draw();
+            });
+        });
+    });
+
+
     $('#addSubcategoryBtn').click(function (e) {
         e.preventDefault();
 
