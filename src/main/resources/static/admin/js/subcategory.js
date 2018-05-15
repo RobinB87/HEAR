@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var table = $("#subCategoryTable").DataTable({
+    var table = $("#subcategoryTable").DataTable({
         'ajax': {
             'url': '/api/subcategory/formatted/all',
             'dataSrc': ''
@@ -91,7 +91,7 @@ $(document).ready(function () {
     $('#addSubcategoryBtn').click(function (e) {
         e.preventDefault();
 
-        var title = $('#subCategoryTitleField').val();
+        var title = $('#subcategoryTitleField').val();
 
         $.post('/api/subcategory/add/' + $('#categoryListSelect2').val(), {
             title: title
@@ -99,7 +99,7 @@ $(document).ready(function () {
             table.clear().draw();
         });
 
-        $('#subCategoryTitleField').empty();
+        $('#subcategoryTitleField').empty();
 
     });
 
