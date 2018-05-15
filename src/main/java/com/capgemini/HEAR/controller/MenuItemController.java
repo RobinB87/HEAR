@@ -155,9 +155,21 @@ public class MenuItemController {
         return drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null;
     }
 
-    @PostMapping("/drink/edit")
-    public Drink editDrink(Drink drink){
+    @PostMapping("/drink/edit/{subcategoryId}")
+    public Drink editDrink(@PathVariable int subcategoryId, Drink drink){
+
+        SubCategory subCategory = new SubCategory();
+
+        if(subCategoryRepository.findById(subcategoryId).isPresent()) {
+            subCategory = subCategoryRepository.findById(subcategoryId).get();
+        } else {
+            subCategory = null;
+        }
+
+        drink.setSubcategory(subCategory);
+
         return drinkRepository.save(drink);
+
     }
 
     @GetMapping("/drink/delete/{id}")

@@ -59,13 +59,15 @@ $(document).ready(function () {
         $('#editDrinkCostPriceField').val(data.costPrice);
         $('#editDrinkSellingPriceField').val(data.sellingPrice);
 
+        console.table(data);
+
         $('#editDrinkBtn').click(function () {
 
             var title = $('#editDrinkTitleField').val();
             var costPrice = $('#editDrinkCostPriceField').val();
             var sellingPrice = $('#editDrinkSellingPriceField').val();
 
-            $.post('/api/menuitem/drink/edit', {
+            $.post('/api/menuitem/drink/edit/' + data.subCategoryId, {
                 id: data.id,
                 title: title,
                 costPrice: costPrice,
