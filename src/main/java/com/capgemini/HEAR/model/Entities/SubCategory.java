@@ -18,9 +18,11 @@ public class SubCategory extends Base {
     private Category category;
 
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL )
+    @JsonIgnore
     private List<Dish> dishes;
 
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL )
+    @JsonIgnore
     private List<Drink> drinks;
 
     public SubCategory() {}

@@ -21,7 +21,7 @@
         <div class=“col-md-12”>
             <div class="card-body text-center">
 
-                <!--Button target zorgt ervoor dat het de modal van new Category laat zien (Dus ga naar de Modal later in de pagina-->
+                <!--Button target zorgt ervoor dat het de modal van new Dish laat zien (Dus ga naar de Modal later in de pagina-->
                 <button class="btn-secondary" type="button" data-toggle="modal" data-target="#createDishModal"
                         id="newDishModal">New Dish
                 </button>
@@ -39,7 +39,7 @@
                     <th>Title</th>
                     <th>Price</th>
                     <th>Subcategory</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
             </table>
@@ -100,7 +100,80 @@
 
         </div>
     </div>
-    <!-- End of Create Category Modal -->
+    <!-- End of Create Dish Modal -->
+
+    <!-- Edit Dish Modal -->
+    <div id="editDishModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Content-->
+            <div class="modal-content">
+                <div class="modal-header text-left">
+                    <h4 class="modal-name">Edit dish</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form data-toggle="validator" role="form" id="editDishForm" onsubmit="return false;"
+                          method="post">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="dishIdField">
+                            <label for="editDishTitleField" class="control-label">Name of dish</label>
+                            <input type="text" class="form-control" id="editDishTitleField"
+                                   placeholder="Enter a name"
+                                   data-error="DAT IS GEEN NAAM BOYO!" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button id="editDishEditBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                                Edit
+                            </button>
+                            <button id="editDishSubmitBtn" type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close
+                            </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End of Edit Modal -->
+
+<!-- Delete Dish Modal: COMFIRMATION!-->
+<div id="deleteDishModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Content-->
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h4 class="modal-name">Are you sure you want to delete this dish?</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="deleteDishForm" onsubmit="return false;"
+                      method="post">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="dishIdForm">
+                    </div>
+
+                    <div class="form-group">
+                        <button id="deleteDishConfirmBtn" type="button" class="btn btn-primary"
+                                data-dismiss="modal">
+                            Confirm
+                        </button>
+                        <button id="deleteDishCancelBtn" type="button" class="btn btn-default" data-dismiss="modal">
+                            Cancel
+                        </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <script src="../admin/js/select2.min.js"></script>

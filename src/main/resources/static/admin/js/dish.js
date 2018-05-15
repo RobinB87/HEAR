@@ -64,17 +64,14 @@ $(document).ready(function () {
         e.preventDefault();
 
         var html = '<div class="form-group">' +
-            '<select class="select2 form-control" id="ingredients' + index + '">';
+            '<select class="select2 form-control ingSelect" id="ingredients' + index + '">';
 
         for(var i = 0; i < ingredientsArray.length; i++) {
-            html = html + '<option value="' + ingredientsArray[i].id + '" name="ingredient[]">' + ingredientsArray[i].getTitle() + '</option>';
+            html = html + '<option value="' + ingredientsArray[i].id + '" name="ingredient[]">' + ingredientsArray[i].title + '</option>';
         }
 
         html = html + '</select>' +
             '</div>';
-
-        console.table(ingredientsArray);
-        console.log(html);
 
         $('#ingredientContainer').append(html);
         $('#ingredients' + index).select2();
@@ -83,25 +80,68 @@ $(document).ready(function () {
 
     });
 
+    var dish = {title: "" , costPrice: "", ingredients: []};
+
+
+    // Add button
     $("#addDishBtn").click(function (e) {
         e.preventDefault();
 
-        var ingredients = [];
-        $('input[name="ingredient[]"]').each(function() {
-           var ingredient = { id: $(this).val() };
-           ingredients.add(ingredient);
+        dish.title = $('#dishTitleField').val();
+        dish.price = $('#dishPriceField').val();
+
+        $('.ingSelect').each(function(index, value) {
+           var ingredient = {  "id": $(this).val() };
+           dish.ingredients.push(ingredient);
         });
 
-        console.log(ingredients);
+        $.ajax({
+           'contentType': 'application/json',
+           'type': 'POST',
+            'url': '/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(),
+           'data': JSON.stringify(dish),
+           success: function() {
+               alert('gelukt');
+               table.clear().draw();
+           }
+        });
 
+    });
 
-        $.post('/api/menuitem/dish/add/' + $('#subCategoryListSelect2').val(), {
-                title: $('#dishTitleField').val(),
-                costPrice: $('#dishPriceField').val(),
-                ingredients: ingredients
+    // Edit button
+    $('#dishTable tbody').on('click', '.editBtn', function () {
+        $('#editDishModal').modal();                                    // Kusjes Robin & Sietske <3
+        var data = table.row($(this).parents('tr')).data();
 
-        }, function () {
-            table.clear().draw();
+        $('#dishIdField').val(data.id);
+        $('#editDishTitleField').val(data.title);
+
+        $('#editCategoryEditBtn').click(function () {
+
+            var title = $('#editDishTitleField').val();
+            $.post('/api/menuitem/dish/edit', {
+                id: data.id,
+                title: title
+            }, function() {
+                table.clear().draw();
+            });
+        });
+    });
+
+    // Delete button
+    $('#dishTable tbody').on('click', '.deleteBtn', function () {
+        $('#deleteDishModal').modal();
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#dishIdField').val(data.id);
+        $('#deleteDishTitleField').val(data.title);
+
+        $('#deleteDishConfirmBtn').click(function () {
+            $.get('/api/menuitem/dish/delete/' + data.id, {
+
+            }, function() {
+                table.clear().draw();
+            });
         });
     });
 

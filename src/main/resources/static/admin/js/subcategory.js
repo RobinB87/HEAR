@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#newSubcategoryModal').click(function () {
+    $('#addSubcategoryModal').click(function () {
         for (var i = 0; i < categoryArray.length; i++) {
             $('#categoryListSelect2')
                 .append($("<option></option>")
@@ -38,28 +38,31 @@ $(document).ready(function () {
         }
     });
 
-    $('#closeButton').click(function () {
+    $('#closeAddSubcategoryBtn').click(function () {
         for (var i = 0; i < categoryArray.length; i++) {
             $('#categoryListSelect2').empty();
         }
     });
 
-    $('.categoryListSelect2').select2();
+    var index = 0;
 
-    $('#subCategorySubmitBtn').click(function (e) {
+    $('#addSubcategoryBtn').click(function (e) {
         e.preventDefault();
 
         var title = $('#subCategoryTitleField').val();
-        var categoryId = $('#categoryListSelect2').val();
 
-        $.post('/api/subcategory/add/' + categoryId, {
+        $.post('/api/subcategory/add/' + $('#categoryListSelect2').val(), {
             title: title
         }, function () {
             table.clear().draw();
         });
 
         $('#subCategoryTitleField').empty();
+
     });
+
+    $('#categoryListSelect2').select2();
+
 });
 
 

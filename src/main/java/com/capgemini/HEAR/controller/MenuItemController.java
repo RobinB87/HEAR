@@ -4,9 +4,11 @@ import com.capgemini.HEAR.model.DTO.DishDTO;
 import com.capgemini.HEAR.model.DTO.DrinkDTO;
 import com.capgemini.HEAR.model.Entities.Dish;
 import com.capgemini.HEAR.model.Entities.Drink;
+import com.capgemini.HEAR.model.Entities.Ingredient;
 import com.capgemini.HEAR.model.Entities.SubCategory;
 import com.capgemini.HEAR.repository.IDishRepository;
 import com.capgemini.HEAR.repository.IDrinkRepository;
+import com.capgemini.HEAR.repository.IIngredientRepository;
 import com.capgemini.HEAR.repository.ISubCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,9 @@ public class MenuItemController {
     @Autowired
     private ISubCategoryRepository subCategoryRepository;
 
+    @Autowired
+    private IIngredientRepository ingredientRepository;
+
 
     /**
      * Dishes: same methods as in category and subcategory
@@ -35,8 +40,18 @@ public class MenuItemController {
      */
 
     @PostMapping("/dish/add/{subcategoryId}")
-    public Dish addDish(@PathVariable int subcategoryId, Dish dish) {
+    public Dish addDish(@PathVariable int subcategoryId, @RequestBody DishDTO dto) {
 
+        List<Ingredient> ingredientList = new ArrayList<>();
+
+        for (Ingredient ingredientDto : dto.getIngredients()) {
+            Ingredient ingr = ingredientRepository.findById(ingredientDto.getId()).isPresent()
+                    ? ingredientRepository.findById(ingredientDto.getId()).get() : null;
+            ingredientList.add(ingr);
+        }
+
+        dto.setIngredients(ingredientList);
+        Dish dish = new Dish(dto);
         SubCategory subCategory = subCategoryRepository.findById(subcategoryId).isPresent() ? subCategoryRepository.findById(subcategoryId).get() : null;
         dish.setSubCategory(subCategory);
         subCategory.addDish(dish);
@@ -62,6 +77,14 @@ public class MenuItemController {
         return dishDTOList;
     }
 
+    @PostMapping("/dish/edit/")
+    public Dish editDish(@RequestBody DishDTO dto) {
+        Dish dish = new Dish(dto);
+        dish.setIngredients(dto.getIngredients());
+
+        return dishRepository.save(dish);
+    }
+
     @GetMapping("/dish/get/{id}")
     public Dish getDish(@PathVariable int id){
         return dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null;
@@ -71,6 +94,7 @@ public class MenuItemController {
     public DishDTO getDishDto(@PathVariable int id) {
         return new DishDTO(dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null);
     }
+
 
 
 
@@ -109,7 +133,19 @@ public class MenuItemController {
         return drinkRepository.findAll();
     }
 
-    @GetMapping("/drink/formatted/get{id}")
+    @GetMapping("/drink/formatted/all")
+    public List<DrinkDTO> getDrinksDTO(){
+        List<DrinkDTO> drinkDTOList = new ArrayList<>();
+
+        for (Drink drink : drinkRepository.findAll()){
+            DrinkDTO dto = new DrinkDTO(drink);
+            drinkDTOList.add(dto);
+        }
+
+        return drinkDTOList;
+    }
+
+    @GetMapping("/drink/formatted/get/{id}")
     public DrinkDTO getDrinkDto(@PathVariable int id){
         return new DrinkDTO(drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null);
     }
@@ -119,9 +155,21 @@ public class MenuItemController {
         return drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null;
     }
 
-    @PostMapping("/drink/edit")
-    public Drink editDrink(Drink drink){
+    @PostMapping("/drink/edit/{subcategoryId}")
+    public Drink editDrink(@PathVariable int subcategoryId, Drink drink){
+
+        SubCategory subCategory = new SubCategory();
+
+        if(subCategoryRepository.findById(subcategoryId).isPresent()) {
+            subCategory = subCategoryRepository.findById(subcategoryId).get();
+        } else {
+            subCategory = null;
+        }
+
+        drink.setSubcategory(subCategory);
+
         return drinkRepository.save(drink);
+
     }
 
     @GetMapping("/drink/delete/{id}")
