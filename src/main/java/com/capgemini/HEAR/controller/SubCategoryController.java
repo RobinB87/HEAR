@@ -83,16 +83,15 @@ public class SubCategoryController {
 
         Category category = new Category();
 
-        if(subCategoryRepository.findById(categoryId).isPresent()){
+        if(categoryRepository.findById(categoryId).isPresent()) {
             category = categoryRepository.findById(categoryId).get();
         } else {
             category = null;
         }
 
-            subCategory.setCategory(category);
+        subCategory.setCategory(category);
 
-            return subCategoryRepository.save(subCategory);
-
+        return subCategoryRepository.save(subCategory);
     }
 
     //delete one subcategory by id

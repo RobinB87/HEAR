@@ -58,7 +58,7 @@ $(document).ready(function () {
 
         $('#editSubcategoryBtn').click(function () {
 
-            var title = $('#editDrinkTitleField').val();
+            var title = $('#editSubcategoryTitleField').val();
 
             $.post('/api/subcategory/edit/' + data.categoryId, {
                 id: data.id,
