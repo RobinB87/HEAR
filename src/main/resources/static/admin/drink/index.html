@@ -37,6 +37,10 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
+                    <th>Cost Price</th>
+                    <th>Selling Price</th>
+                    <th>Subcategory</th>
+                    <th>Edit</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -112,10 +116,13 @@
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="editDrinkIdField">
                         <label for="editDrinkTitleField" class="control-label">Name of drink</label>
-                        <label for="editDrinkPriceField" class="control-label">Price of drink</label>
                         <input type="text" class="form-control" id="editDrinkTitleField" placeholder="Enter a name"
                                data-error="DAT IS GEEN NAAM BOYO!" required>
-                        <input type="number" class="form-control" id="editDrinkPriceField" placeholder="Enter a price"
+                        <label for="editDrinkCostPriceField" class="control-label">Price of drink</label>
+                        <input type="number" class="form-control" id="editDrinkCostPriceField" placeholder="Enter a price"
+                               data-error="DAT IS GEEN PRICE BOYO!" required>
+                        <label for="editDrinkSellingPriceField" class="control-label">Price of drink</label>
+                        <input type="number" class="form-control" id="editDrinkSellingPriceField" placeholder="Enter a price"
                                data-error="DAT IS GEEN PRICE BOYO!" required>
                     </div>
 
@@ -125,6 +132,7 @@
                         </button>
                         <button id="editDrinkCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close
                         </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -139,7 +147,7 @@
         <!-- Content-->
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h4 class="modal-name">Create drink</h4>
+                <h4 class="modal-name">Delete drink, are you sure!?!?!?</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 

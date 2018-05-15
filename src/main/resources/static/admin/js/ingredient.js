@@ -29,7 +29,7 @@ $("#addIngredientSubmitBtn").click(function (e) {
     },  function() {
              //table.clear().draw();
              table.ajax.reload();
-                })
+                });
     });
         // Edit ingredient functie
 $('#ingredientTable tbody').on('click', '.editBtn', function () {
