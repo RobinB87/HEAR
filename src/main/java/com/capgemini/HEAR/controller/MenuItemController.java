@@ -77,6 +77,14 @@ public class MenuItemController {
         return dishDTOList;
     }
 
+    @PostMapping("/dish/edit/")
+    public Dish editDish(@RequestBody DishDTO dto) {
+        Dish dish = new Dish(dto);
+        dish.setIngredients(dto.getIngredients());
+
+        return dishRepository.save(dish);
+    }
+
     @GetMapping("/dish/get/{id}")
     public Dish getDish(@PathVariable int id){
         return dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null;

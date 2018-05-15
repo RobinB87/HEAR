@@ -82,6 +82,8 @@ $(document).ready(function () {
 
     var dish = {title: "" , costPrice: "", ingredients: []};
 
+
+    // Add button
     $("#addDishBtn").click(function (e) {
         e.preventDefault();
 
@@ -104,6 +106,43 @@ $(document).ready(function () {
            }
         });
 
+    });
+
+    // Edit button
+    $('#dishTable tbody').on('click', '.editBtn', function () {
+        $('#editDishModal').modal();                                    // Kusjes Robin & Sietske <3
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#dishIdField').val(data.id);
+        $('#editDishTitleField').val(data.title);
+
+        $('#editCategoryEditBtn').click(function () {
+
+            var title = $('#editDishTitleField').val();
+            $.post('/api/menuitem/dish/edit', {
+                id: data.id,
+                title: title
+            }, function() {
+                table.clear().draw();
+            });
+        });
+    });
+
+    // Delete button
+    $('#dishTable tbody').on('click', '.deleteBtn', function () {
+        $('#deleteDishModal').modal();
+        var data = table.row($(this).parents('tr')).data();
+
+        $('#dishIdField').val(data.id);
+        $('#deleteDishTitleField').val(data.title);
+
+        $('#deleteDishConfirmBtn').click(function () {
+            $.get('/api/menuitem/dish/delete/' + data.id, {
+
+            }, function() {
+                table.clear().draw();
+            });
+        });
     });
 
     $('#subCategoryListSelect2').select2();
