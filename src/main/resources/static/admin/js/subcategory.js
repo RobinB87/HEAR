@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#newSubcategoryModal').click(function () {
+    $('#addSubcategoryModal').click(function () {
         for (var i = 0; i < categoryArray.length; i++) {
             $('#categoryListSelect2')
                 .append($("<option></option>")
@@ -38,7 +38,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#closeButton').click(function () {
+    $('#closeAddSubcategoryBtn').click(function () {
         for (var i = 0; i < categoryArray.length; i++) {
             $('#categoryListSelect2').empty();
         }
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     var index = 0;
 
-    $('#subCategorySubmitBtn').click(function (e) {
+    $('#addSubcategoryBtn').click(function (e) {
         e.preventDefault();
 
         var title = $('#subCategoryTitleField').val();
