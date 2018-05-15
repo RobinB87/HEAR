@@ -87,6 +87,9 @@ public class MenuItemController {
         return new DishDTO(dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null);
     }
 
+
+
+
     @PostMapping("/dish/edit")
     public Dish editDish(Dish dish){
         return dishRepository.save(dish);
@@ -122,7 +125,19 @@ public class MenuItemController {
         return drinkRepository.findAll();
     }
 
-    @GetMapping("/drink/formatted/get{id}")
+    @GetMapping("/drink/formatted/all")
+    public List<DrinkDTO> getDrinksDTO(){
+        List<DrinkDTO> drinkDTOList = new ArrayList<>();
+
+        for (Drink drink : drinkRepository.findAll()){
+            DrinkDTO dto = new DrinkDTO(drink);
+            drinkDTOList.add(dto);
+        }
+
+        return drinkDTOList;
+    }
+
+    @GetMapping("/drink/formatted/get/{id}")
     public DrinkDTO getDrinkDto(@PathVariable int id){
         return new DrinkDTO(drinkRepository.findById(id).isPresent() ? drinkRepository.findById(id).get() : null);
     }

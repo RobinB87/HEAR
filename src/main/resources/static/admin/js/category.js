@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 	// Edit button
     $('#categoryTable tbody').on('click', '.editBtn', function () {
-    $('#editCategoryModal').modal();                                    // Kusjes Robin & Sietske
+    $('#editCategoryModal').modal();
         var data = table.row($(this).parents('tr')).data();
 
         $('#categoryIdField').val(data.id);
