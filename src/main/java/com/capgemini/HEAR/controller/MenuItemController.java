@@ -4,9 +4,11 @@ import com.capgemini.HEAR.model.DTO.DishDTO;
 import com.capgemini.HEAR.model.DTO.DrinkDTO;
 import com.capgemini.HEAR.model.Entities.Dish;
 import com.capgemini.HEAR.model.Entities.Drink;
+import com.capgemini.HEAR.model.Entities.Ingredient;
 import com.capgemini.HEAR.model.Entities.SubCategory;
 import com.capgemini.HEAR.repository.IDishRepository;
 import com.capgemini.HEAR.repository.IDrinkRepository;
+import com.capgemini.HEAR.repository.IIngredientRepository;
 import com.capgemini.HEAR.repository.ISubCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,9 @@ public class MenuItemController {
     @Autowired
     private ISubCategoryRepository subCategoryRepository;
 
+    @Autowired
+    private IIngredientRepository ingredientRepository;
+
 
     /**
      * Dishes: same methods as in category and subcategory
@@ -35,8 +40,18 @@ public class MenuItemController {
      */
 
     @PostMapping("/dish/add/{subcategoryId}")
-    public Dish addDish(@PathVariable int subcategoryId, Dish dish) {
+    public Dish addDish(@PathVariable int subcategoryId, @RequestBody DishDTO dto) {
 
+        List<Ingredient> ingredientList = new ArrayList<>();
+
+        for (Ingredient ingredientDto : dto.getIngredients()) {
+            Ingredient ingr = ingredientRepository.findById(ingredientDto.getId()).isPresent()
+                    ? ingredientRepository.findById(ingredientDto.getId()).get() : null;
+            ingredientList.add(ingr);
+        }
+
+        dto.setIngredients(ingredientList);
+        Dish dish = new Dish(dto);
         SubCategory subCategory = subCategoryRepository.findById(subcategoryId).isPresent() ? subCategoryRepository.findById(subcategoryId).get() : null;
         dish.setSubCategory(subCategory);
         subCategory.addDish(dish);
@@ -72,17 +87,8 @@ public class MenuItemController {
         return new DishDTO(dishRepository.findById(id).isPresent() ? dishRepository.findById(id).get() : null);
     }
 
-    @GetMapping("/drink/formatted/all")
-    public List<DrinkDTO> getDrinksDTO(){
-        List<DrinkDTO> drinkDTOList = new ArrayList<>();
 
-        for (Drink drink : drinkRepository.findAll()){
-            DrinkDTO dto = new DrinkDTO(drink);
-            drinkDTOList.add(dto);
-        }
 
-        return drinkDTOList;
-    }
 
     @PostMapping("/dish/edit")
     public Dish editDish(Dish dish){
@@ -117,6 +123,18 @@ public class MenuItemController {
     @GetMapping("/drink/all")
     public Iterable<Drink> getDrinks() {
         return drinkRepository.findAll();
+    }
+
+    @GetMapping("/drink/formatted/all")
+    public List<DrinkDTO> getDrinksDTO(){
+        List<DrinkDTO> drinkDTOList = new ArrayList<>();
+
+        for (Drink drink : drinkRepository.findAll()){
+            DrinkDTO dto = new DrinkDTO(drink);
+            drinkDTOList.add(dto);
+        }
+
+        return drinkDTOList;
     }
 
     @GetMapping("/drink/formatted/get/{id}")
