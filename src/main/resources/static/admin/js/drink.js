@@ -16,7 +16,7 @@ $(document).ready(function () {
                 "data": null,
                 "defaultContent": "<i class='fa fa-edit editBtn'></i> | <i class='fa fa-trash deleteBtn'></i>"
             }
-            ]
+        ]
     });
 
     var subCategoryArray = [];
