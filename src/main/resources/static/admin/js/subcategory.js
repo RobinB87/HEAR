@@ -44,22 +44,25 @@ $(document).ready(function () {
         }
     });
 
-    $('.categoryListSelect2').select2();
+    var index = 0;
 
     $('#subCategorySubmitBtn').click(function (e) {
         e.preventDefault();
 
         var title = $('#subCategoryTitleField').val();
-        var categoryId = $('#categoryListSelect2').val();
 
-        $.post('/api/subcategory/add/' + categoryId, {
+        $.post('/api/subcategory/add/' + $('#categoryListSelect2').val(), {
             title: title
         }, function () {
             table.clear().draw();
         });
 
         $('#subCategoryTitleField').empty();
+
     });
+
+    $('#categoryListSelect2').select2();
+
 });
 
 
