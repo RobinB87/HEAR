@@ -1,4 +1,4 @@
-function spawnButtons() {
+// function spawnButtons() {
     //
     // $.get('/api/menu/categories', function(data) {
     //     for (var i = 0; i < data.length; i++) {
@@ -7,6 +7,6 @@ function spawnButtons() {
     //     }
     //
     //     $('#menukaart').html(html);
-}
+// }
 
 
