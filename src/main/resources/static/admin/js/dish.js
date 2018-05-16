@@ -102,7 +102,7 @@ $(document).ready(function () {
            'data': JSON.stringify(dish),
            success: function() {
                alert('gelukt');
-               table.clear().draw();
+               table.ajax.reload();
            }
         });
 
@@ -123,7 +123,7 @@ $(document).ready(function () {
                 id: data.id,
                 title: title
             }, function() {
-                table.clear().draw();
+                table.ajax.reload();
             });
         });
     });
@@ -140,7 +140,7 @@ $(document).ready(function () {
             $.get('/api/menuitem/dish/delete/' + data.id, {
 
             }, function() {
-                table.clear().draw();
+                table.ajax.reload();
             });
         });
     });

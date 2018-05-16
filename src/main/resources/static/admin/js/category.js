@@ -25,7 +25,7 @@ $(document).ready(function () {
         $.post('/api/category/add', {
             title: title
         }, function() {
-            table.clear().draw();
+            table.ajax.reload();
         });
     });
 
@@ -44,7 +44,7 @@ $(document).ready(function () {
                 id: data.id,
                 title: title
             }, function() {
-                table.clear().draw();
+                table.ajax.reload();
             });
         });
     });
@@ -62,7 +62,7 @@ $(document).ready(function () {
             $.get('/api/category/delete/' + data.id, {
 
             }, function() {
-                table.clear().draw();
+                table.ajax.reload();
             });
         });
     });

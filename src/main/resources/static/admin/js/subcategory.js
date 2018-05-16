@@ -64,7 +64,7 @@ $(document).ready(function () {
                 id: data.id,
                 title: title
             }, function() {
-                table.clear().draw();
+                table.ajax.reload();
             });
         });
     });
@@ -82,7 +82,7 @@ $(document).ready(function () {
            $.get('/api/subcategory/delete/' + data.id, {
 
            }, function() {
-               table.clear().draw();
+               table.ajax.reload();
            });
         });
     });
@@ -96,7 +96,7 @@ $(document).ready(function () {
         $.post('/api/subcategory/add/' + $('#categoryListSelect2').val(), {
             title: title
         }, function () {
-            table.clear().draw();
+            table.ajax.reload();
         });
 
         $('#subcategoryTitleField').empty();

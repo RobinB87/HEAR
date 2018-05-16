@@ -73,7 +73,7 @@ $(document).ready(function () {
                 costPrice: costPrice,
                 sellingPrice: sellingPrice
             }, function() {
-                table.clear().draw();
+                table.ajax.reload();
             });
         });
     });
@@ -91,7 +91,7 @@ $(document).ready(function () {
            $.get('/api/menuitem/drink/delete/' + data.id, {
 
            }, function() {
-               table.clear().draw();
+               table.ajax.reload();
            });
         });
     });
@@ -108,7 +108,8 @@ $(document).ready(function () {
                 costPrice: costPrice,
                 sellingPrice: sellingPrice
             }, function () {
-                table.clear().draw();
+                table.ajax.reload();
+
             });
 
             $('#addDrinkTitleField').empty();
